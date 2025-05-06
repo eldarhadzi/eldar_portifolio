@@ -31,7 +31,7 @@ const projects = [
       { name: "Stripe" },
     ],
     image: "/assets/work/thumb1.png", 
-    live: "", // Add deployed URL here when available
+    live: "https://gymmate-frontend.vercel.app/",
     github: "", // Add GitHub repository link here when available
   },
   {
