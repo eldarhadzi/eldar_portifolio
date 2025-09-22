@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,6 +32,40 @@ const info = [
 import { motion } from "framer-motion";
 
 const Contact = () => {
+
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
+    });
+
+    if (res.ok) {
+      alert("Message sent successfully!");
+      setFormData({
+        firstname: "", lastname: "", email: "", phone: "",
+        service: "", message: ""
+      });
+    } else {
+      alert("Something went wrong. Try again.");
+    }
+  };
+
   return (
     <motion.section
       initial={{ opacity:0 }}
@@ -43,17 +79,17 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[53%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">Let's Work Together</h3>
               <p className="text-white/60">Have a project in mind or just want to say hello? Drop me a message and I'll get back to you soon.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input name="firstname" type="firstname" value={formData.firstname} onChange={handleChange} placeholder="Firstname" />
+                <Input name="lastname" type="lastname" value={formData.lastname} onChange={handleChange} placeholder="Lastname" />
+                <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email address" />
+                <Input name="phone" type="phone" value={formData.phone} onChange={handleChange} placeholder="Phone number" />
               </div>
 
-              <Select>
+              <Select onValueChange={(value) => setFormData({...formData, service: value})}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
@@ -68,9 +104,15 @@ const Contact = () => {
                 </SelectContent>
               </Select>
 
-              <Textarea className="h-[200px]" placeholder="Type your message here."/>
+              <Textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="h-[200px]" 
+                placeholder="Type your message here."
+              />
 
-              <Button size="md" className="max-w-40">
+              <Button type="submit" size="md" className="max-w-40">
                 Send message
               </Button>
 
