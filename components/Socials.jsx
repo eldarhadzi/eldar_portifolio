@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 const socials = [
   { icon: <FaGithub />, path: "https://github.com/eldarhadzi", type: "github" },
   { icon: <FaLinkedinIn />, path: "https://www.linkedin.com/in/eldar-had%C5%BEovi%C4%87-1375a925b/", type: "linkedin" },
-  { icon: <FaWhatsapp />, path: "https://wa.me/905551234567?text=Hello%20Eldar%2C%20I%20want%20to%20connect%20with%20you!", type: "whatsapp" },
+  { icon: <FaWhatsapp />, path: "https://wa.me/38761880853?text=Hello%20Eldar%2C%20I%20want%20to%20connect%20with%20you!", type: "whatsapp" },
 ]
 
 const Socials = ({ containerStyles }) => {
