@@ -13,16 +13,16 @@ const Home = () => {
 
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Business Technologist</span>
+            <span className="text-xl">Software Engineer & Builder</span>
             <h1 className="h1 mb-6">
               Hello I'm <br /> <span className="text-accent">Eldar Hadžović</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-            I'm a driven, creative problem-solver who builds big ideas into reality—leading 
+            I'm a driven, creative problem-solver who builds big ideas into reality—leading
             with vision, negotiating with confidence, and managing like a pro.
             </p>
             <p className="font-semibold text-white mb-4">
-            Coding. Connecting. Conquering deals.
+            From idea to shipped product — with the business chops to fund it.
             </p>
 
             {/* button and socials */}

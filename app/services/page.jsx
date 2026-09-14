@@ -18,26 +18,26 @@ const services = [
   },
   {
     num: '03',
-    title: 'Logo Design',
-    description: 'Creating visually striking and memorable brand identities tailored to your business.',
-    href: ""
-  },
-  {
-    num: '04',
-    title: 'SEO Optimization',
-    description: 'Enhancing website visibility and search engine rankings through strategic content and structure.',
-    href: ""
-  },
-  {
-    num: '05',
     title: 'Negotiation',
     description: 'Skilled in client and stakeholder negotiation to align project goals and secure successful outcomes.',
     href: ""
   },
   {
-    num: '06',
+    num: '04',
     title: 'Project Management',
     description: 'Planning, executing, and delivering projects efficiently while meeting timelines and budgets.',
+    href: ""
+  },
+  {
+    num: '05',
+    title: 'Logo Design',
+    description: 'Creating visually striking and memorable brand identities tailored to your business.',
+    href: ""
+  },
+  {
+    num: '06',
+    title: 'SEO Optimization',
+    description: 'Enhancing website visibility and search engine rankings through strategic content and structure.',
     href: ""
   },
 ];
@@ -48,7 +48,10 @@ const Services = () => {
   return (
     <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-5">
       <div className="container mx-auto">
-        <motion.div 
+        <div className="mb-8 text-center xl:text-left">
+          <span className="text-accent text-xl">Looking to build something together?</span>
+        </div>
+        <motion.div
           initial={{ opacity:0 }}
           animate={{
             opacity:1,

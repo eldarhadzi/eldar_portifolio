@@ -6,7 +6,7 @@ import { SiTailwindcss ,SiExpress, SiNextdotjs, SiMongodb, SiPostgresql, SiJiras
 // about data
 const about = {
   title: 'About me',
-  description: "I'm a Software Engineering student at Ostim Technical University with strong experience in full-stack development, project management, and creative tools like Adobe Suite and Figma. I’ve held leadership roles in both tech startups and hospitality, blending technical skills with business acumen. Passionate about building innovative solutions, I thrive in cross-functional teams and enjoy organizing impactful events.",
+  description: "I'm a Software Engineering student at Ostim Technical University, focused on full-stack development — React and Next.js on the front end, Node and Express APIs backed by MongoDB or PostgreSQL, containerized with Docker. I'm comfortable owning a feature end-to-end, from a Figma mockup to a shipped, working product, and I like working in cross-functional teams where I can move fast on real technical problems.",
   info: [ 
   {
     fieldName: "Name",
