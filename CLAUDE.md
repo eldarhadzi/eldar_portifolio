@@ -58,17 +58,17 @@ Experience (Resume page):
 
 - Promet Bilgi Sistemleri, Mobile Application Developer, Feb 2026 - Present
 - Koloniyas D.o.o., Co-Founder & Full-Stack Developer, Jan 2025 - Feb 2026 (ended)
-- DAKAEi AI, Business Development Manager, Nov 2024 - Present
-- Heritage Hotel Krone, Agency Relations Officer, Oct 2024 - Present
+- DAKAEi AI, Business Development Manager, Dec 2024 - Jan 2026 (ended)
+- Heritage Hotel Krone, Agency Relations Officer, Oct 2024 - Dec 2025 (ended)
 - HaydeSoft, Frontend Developer, Mar 2023 - Jun 2023
 - Simurg Media D.o.o., Undergraduate Technical Assistant, Jan 2021 - Jun 2021
 
-Education: Ostim Technical University, B.S. Software Engineering, 2022 - Sep 2026, GPA 3.65/4.00. First Bosniak Gymnasium, Mathematics & Information Technologies, 2018 - Jun 2022, GPA 4.89/5.00. Achievement: BBI League of Negotiation, 1st place, Mar 2021.
+Education: Ostim Technical University, B.S. Software Engineering, graduated Jun 2026, GPA 3.81/4.00. First Bosniak Gymnasium, Mathematics & Information Technology, graduated Jun 2022, GPA 4.89/5.00. Achievement: BBI League of Negotiation, 1st place, Mar 2021.
 
 ## Project Scope
 
 - **Services and business-development framing are permanently removed from project scope.** There is no Services page, no services nav entry, and no service-type selector on the contact form. Do not add a service menu, consulting offering, or a separate business-development persona back in any form.
-- Business and entrepreneurial roles (DAKAEi AI, Heritage Hotel Krone, Koloniyas) appear as supporting context in Experience.
+- Business and entrepreneurial roles (Koloniyas, DAKAEi AI, Heritage Hotel Krone) appear as supporting context in Experience.
 - Pages: Home, Resume, Work, Contact.
 
 ## Known Issues Backlog

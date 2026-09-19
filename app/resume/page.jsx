@@ -52,13 +52,13 @@ const experience = {
       company: "DAKAEi AI",
       position: "Business Development Manager",
       location: "Turkiye, Ankara",
-      duration: "Nov 2024 - Present",
+      duration: "Dec 2024 - Jan 2026",
     },
     {
       company: "Heritage Hotel Krone",
       position: "Agency Relations Officer",
       location: "Bosnia and Herzegovina, Sarajevo",
-      duration: "Oct 2024 - Present",
+      duration: "Oct 2024 - Dec 2025",
     },
     {
       company: "HaydeSoft",
@@ -83,13 +83,13 @@ const education = {
   items:[
     {
       institution: "Ostim Technical University",
-      degree: "B.S. Software Engineering (English)",
-      duration: "2022 - Sep 2026 | GPA 3.65/4.00"
+      degree: "B.S. Software Engineering",
+      duration: "Graduated Jun 2026 | GPA 3.81/4.00"
     },
     {
       institution: "First Bosniak Gymnasium",
-      degree: "Mathematics & Information Technologies",
-      duration: "2018 - Jun 2022 | GPA 4.89/5.00",
+      degree: "Mathematics & Information Technology",
+      duration: "Graduated Jun 2022 | GPA 4.89/5.00",
     },
     {
       institution: "Bosnia Bank International",
