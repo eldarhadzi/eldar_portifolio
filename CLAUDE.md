@@ -78,7 +78,7 @@ Education: Ostim Technical University, B.S. Software Engineering, graduated Jun 
 
 - [ ] Contact API is broken: `app/api/contact.js` is not an App Router route (needs `app/api/contact/route.js` exporting `POST`), and the handler uses the Pages Router `(req, res)` signature. Form submissions 404. Also logs request data and the password length, and interpolates unescaped input into HTML. Scheduled for the next phase.
 - [x] Work page dead links: fixed. Project content is in `data/projects.js`, and links with an empty href render nothing.
-- [ ] Skills list on the Resume page includes items with no evidence of use in the repo or projects (C, PostgreSQL). Needs the owner's confirmation before changes.
+- [ ] Skills list on the Resume page: PostgreSQL is now evidenced (CV and RestaurantOS). `C` is not: the CV lists C++, not C. Needs the owner's confirmation before changing.
 - [ ] `README.md` is stale (wrong CV path, placeholder clone URL, nonexistent `styles/` folder).
 - [ ] Visual redesign is a later phase. Do not change color tokens, typography, spacing, or layout during content-only work.
 
