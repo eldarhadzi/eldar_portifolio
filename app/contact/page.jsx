@@ -15,21 +15,22 @@ const info = [
   {
     icon: <FaPhoneAlt />,
     title: "Phone",
-    description: "+387 61 880 853"
+    description: contact.phone
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "eldarhadzovic03@gmail.com"
+    description: contact.email
   },
   {
     icon: <FaMapMarkerAlt />,
     title: "Address",
-    description: "Sarajevo, Bosnia and Herzegovina"
+    description: contact.location
   },
 ]
 
 import { motion } from "framer-motion";
+import { contact } from "@/data/site";
 
 const Contact = () => {
 
