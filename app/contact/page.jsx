@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { validateContact, LIMITS } from "@/lib/contactValidation";
 
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
@@ -32,34 +33,52 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
 
-  const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
+  const emptyForm = { firstname: "", lastname: "", email: "", phone: "", message: "", website: "" };
+
+  const [formData, setFormData] = useState(emptyForm);
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [status, setStatus] = useState({ state: "idle", message: "" });
+
+  const loading = status.state === "loading";
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
+    if (fieldErrors[e.target.name]) {
+      setFieldErrors({...fieldErrors, [e.target.name]: undefined});
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
-    });
+    const { errors } = validateContact(formData);
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) {
+      setStatus({ state: "error", message: "Please fix the highlighted fields." });
+      return;
+    }
 
-    if (res.ok) {
-      alert("Message sent successfully!");
-      setFormData({
-        firstname: "", lastname: "", email: "", phone: "", message: ""
+    setStatus({ state: "loading", message: "" });
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
       });
-    } else {
-      alert("Something went wrong. Try again.");
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.success) {
+        setFormData(emptyForm);
+        setFieldErrors({});
+        setStatus({ state: "success", message: "Message sent. I'll get back to you soon." });
+      } else {
+        setFieldErrors(data.errors || {});
+        setStatus({ state: "error", message: data.error || "Something went wrong. Please try again." });
+      }
+    } catch {
+      setStatus({ state: "error", message: "Could not reach the server. Check your connection and try again." });
     }
   };
 
@@ -76,27 +95,65 @@ const Contact = () => {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[53%] order-2 xl:order-none">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">Let's Work Together</h3>
               <p className="text-white/60">Have a project in mind or just want to say hello? Drop me a message and I'll get back to you soon.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input name="firstname" type="firstname" value={formData.firstname} onChange={handleChange} placeholder="Firstname" />
-                <Input name="lastname" type="lastname" value={formData.lastname} onChange={handleChange} placeholder="Lastname" />
-                <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email address" />
-                <Input name="phone" type="phone" value={formData.phone} onChange={handleChange} placeholder="Phone number" />
+                <div>
+                  <Input name="firstname" type="text" autoComplete="given-name" maxLength={LIMITS.name.max} value={formData.firstname} onChange={handleChange} placeholder="Firstname" aria-invalid={!!fieldErrors.firstname} className="w-full" />
+                  {fieldErrors.firstname && <p className="text-red-400 text-sm mt-2">{fieldErrors.firstname}</p>}
+                </div>
+                <div>
+                  <Input name="lastname" type="text" autoComplete="family-name" maxLength={LIMITS.name.max} value={formData.lastname} onChange={handleChange} placeholder="Lastname" aria-invalid={!!fieldErrors.lastname} className="w-full" />
+                  {fieldErrors.lastname && <p className="text-red-400 text-sm mt-2">{fieldErrors.lastname}</p>}
+                </div>
+                <div>
+                  <Input name="email" type="email" autoComplete="email" maxLength={LIMITS.email.max} value={formData.email} onChange={handleChange} placeholder="Email address" aria-invalid={!!fieldErrors.email} className="w-full" />
+                  {fieldErrors.email && <p className="text-red-400 text-sm mt-2">{fieldErrors.email}</p>}
+                </div>
+                <div>
+                  <Input name="phone" type="tel" autoComplete="tel" maxLength={LIMITS.phone.max} value={formData.phone} onChange={handleChange} placeholder="Phone number (optional)" aria-invalid={!!fieldErrors.phone} className="w-full" />
+                  {fieldErrors.phone && <p className="text-red-400 text-sm mt-2">{fieldErrors.phone}</p>}
+                </div>
               </div>
 
-              <Textarea 
-                name="message"
-                value={formData.message}
+              {/* honeypot: hidden from visitors, bots tend to fill it */}
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
                 onChange={handleChange}
-                className="h-[200px]" 
-                placeholder="Type your message here."
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute -left-[9999px] h-0 w-0 opacity-0"
               />
 
-              <Button type="submit" size="md" className="max-w-40">
-                Send message
-              </Button>
+              <div>
+                <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  maxLength={LIMITS.message.max}
+                  aria-invalid={!!fieldErrors.message}
+                  className="h-[200px]"
+                  placeholder="Type your message here."
+                />
+                {fieldErrors.message && <p className="text-red-400 text-sm mt-2">{fieldErrors.message}</p>}
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <Button type="submit" size="md" className="max-w-40" disabled={loading}>
+                  {loading ? "Sending..." : "Send message"}
+                </Button>
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className={status.state === "success" ? "text-accent" : "text-red-400"}
+                >
+                  {status.message}
+                </p>
+              </div>
 
             </form>
 
