@@ -21,7 +21,7 @@ const Photo = () => {
         }}
          className="w-[288px] h-[288px] xl:w-[488px] xl:h-[488px] rounded-full overflow-hidden absolute mix-blend-lighten">
           <Image 
-            src="/assets/eldarone.jpeg" 
+            src="/assets/eldarone.png" 
             priority 
             quality={100} 
             fill 
