@@ -6,47 +6,16 @@ import { useInitialLoad } from "@/components/InitialLoadProvider";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import EducationCard from "@/components/EducationCard";
 import AchievementCard from "@/components/AchievementCard";
+import SkillGroup from "@/components/SkillGroup";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { site } from "@/data/site";
 import { summary, experience } from "@/data/experience";
 import { education, achievements } from "@/data/education";
+import { skillGroups } from "@/data/skills";
 
 import { FiDownload } from "react-icons/fi";
-import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython } from "react-icons/fa";
-import { SiTailwindcss, SiExpress, SiNextdotjs, SiMongodb, SiPostgresql, SiJirasoftware, SiWordpress, SiC, SiDocker, SiAdobephotoshop } from "react-icons/si";
 
 const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent-dark focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
-
-// skills data
-const skills = [
-  // Programming languages
-  { icon: <FaHtml5 />, name: "html 5" },
-  { icon: <FaCss3 />, name: "css 3" },
-  { icon: <FaJs />, name: "javascript" },
-  { icon: <FaPython />, name: "python" },
-  { icon: <SiC />, name: "c" },
-
-  // Frameworks & libraries
-  { icon: <FaReact />, name: "react.js" },
-  { icon: <FaNodeJs />, name: "node.js" },
-  { icon: <SiTailwindcss />, name: "tailwind.css" },
-  { icon: <SiExpress />, name: "express.js" },
-  { icon: <SiNextdotjs />, name: "next.js" },
-
-  // Databases & backend
-  { icon: <SiMongodb />, name: "mongodb" },
-  { icon: <SiPostgresql />, name: "postgresql" },
-
-  // Design tools
-  { icon: <FaFigma />, name: "figma" },
-  { icon: <SiAdobephotoshop />, name: "photoshop" },
-
-  // Programs & tools
-  { icon: <SiWordpress />, name: "wordpress" },
-  { icon: <SiJirasoftware />, name: "jira" },
-  { icon: <SiDocker />, name: "docker" },
-];
 
 const sectionHeading = "text-[28px] xl:text-[36px] leading-[1.1] font-semibold mb-8";
 
@@ -104,25 +73,11 @@ const Resume = () => {
         {/* skills */}
         <section aria-labelledby="skills-title">
           <h2 id="skills-title" className={sectionHeading}>Skills</h2>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-            {skills.map((skill) => (
-              <li key={skill.name}>
-                <TooltipProvider delayDuration={100}>
-                  <Tooltip>
-                    <TooltipTrigger
-                      aria-label={skill.name}
-                      className="w-full h-[150px] bg-surface border border-black/10 rounded-xl flex justify-center items-center group"
-                    >
-                      <div className="text-6xl group-hover:text-accent-dark transition-all duration-300">{skill.icon}</div>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p className="capitalize">{skill.name}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </li>
+          <div className="flex flex-col gap-10">
+            {skillGroups.map((group) => (
+              <SkillGroup key={group.label} label={group.label} items={group.items} />
             ))}
-          </ul>
+          </div>
         </section>
 
         {/* download cv */}
