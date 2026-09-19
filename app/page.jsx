@@ -17,11 +17,7 @@ const Home = () => {
               Hello I'm <br /> <span className="text-accent">Eldar Hadžović</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-            I'm a driven, creative problem-solver who builds big ideas into reality—leading
-            with vision, negotiating with confidence, and managing like a pro.
-            </p>
-            <p className="font-semibold text-white mb-4">
-            From idea to shipped product — with the business chops to fund it.
+            I build software products across web, mobile, and backend systems, with a focus on turning ideas into working products.
             </p>
 
             {/* button and socials */}

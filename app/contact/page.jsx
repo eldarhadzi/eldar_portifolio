@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
 
@@ -38,7 +37,6 @@ const Contact = () => {
     lastname: "",
     email: "",
     phone: "",
-    service: "",
     message: ""
   });
 
@@ -58,8 +56,7 @@ const Contact = () => {
     if (res.ok) {
       alert("Message sent successfully!");
       setFormData({
-        firstname: "", lastname: "", email: "", phone: "",
-        service: "", message: ""
+        firstname: "", lastname: "", email: "", phone: "", message: ""
       });
     } else {
       alert("Something went wrong. Try again.");
@@ -88,21 +85,6 @@ const Contact = () => {
                 <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email address" />
                 <Input name="phone" type="phone" value={formData.phone} onChange={handleChange} placeholder="Phone number" />
               </div>
-
-              <Select onValueChange={(value) => setFormData({...formData, service: value})}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">Mobile Development</SelectItem>
-                    <SelectItem value="mst">UI/UX Design</SelectItem>
-                    <SelectItem value="nst">Logo Design</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
 
               <Textarea 
                 name="message"
