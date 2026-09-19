@@ -60,7 +60,7 @@ Every claim on the site must trace to a verified source: the CV (`public/assets/
 Experience (Resume page):
 
 - Promet Bilgi Sistemleri, Mobile Application Developer, Feb 2026 - Present
-- Koloniyas D.o.o., Co-Founder & Full-Stack Developer, Jan 2025 - Feb 2026 (ended)
+- Koloniyas D.o.o., Co-Founder & Full-Stack Developer, Jan 2025 - Feb 2026 (my involvement ended; the company continues to operate, koloniyas.ba)
 - DAKAEi AI, Business Development Manager, Dec 2024 - Jan 2026 (ended)
 - Heritage Hotel Krone, Agency Relations Officer, Oct 2024 - Dec 2025 (ended)
 - HaydeSoft, Frontend Developer, Mar 2023 - Jun 2023
@@ -70,6 +70,7 @@ Education: Ostim Technical University, B.S. Software Engineering, graduated Jun 
 
 ## Project Scope
 
+- The Resume Summary carries one plain line, "Currently available for freelance work." (owner-requested). It is a fact, not an offering: no service menu, pricing, or CTA.
 - **Services and business-development framing are permanently removed from project scope.** There is no Services page, no services nav entry, and no service-type selector on the contact form. Do not add a service menu, consulting offering, or a separate business-development persona back in any form.
 - Business and entrepreneurial roles (Koloniyas, DAKAEi AI, Heritage Hotel Krone) appear as supporting context in Experience.
 - Pages: Home, Resume, Work, Contact.
@@ -78,7 +79,7 @@ Education: Ostim Technical University, B.S. Software Engineering, graduated Jun 
 
 - [ ] Contact API is broken: `app/api/contact.js` is not an App Router route (needs `app/api/contact/route.js` exporting `POST`), and the handler uses the Pages Router `(req, res)` signature. Form submissions 404. Also logs request data and the password length, and interpolates unescaped input into HTML. Scheduled for the next phase.
 - [x] Work page dead links: fixed. Project content is in `data/projects.js`, and links with an empty href render nothing.
-- [ ] Skills list on the Resume page includes items with no evidence of use in the repo or projects (C, PostgreSQL). Needs the owner's confirmation before changes.
+- [ ] Skills list on the Resume page: PostgreSQL is now evidenced (CV and RestaurantOS). `C` is not: the CV lists C++, not C. Needs the owner's confirmation before changing.
 - [ ] `README.md` is stale (wrong CV path, placeholder clone URL, nonexistent `styles/` folder).
 - [ ] Visual redesign is a later phase. Do not change color tokens, typography, spacing, or layout during content-only work.
 
