@@ -4,8 +4,9 @@
 export const summary = {
   paragraphs: [
     "I build software products across web, mobile, and backend systems. At Promet Bilgi Sistemleri I work on production Flutter mobile applications in a 10-member team, including API integration and Firebase Authentication.",
-    "At Koloniyas I worked as a co-founder and full-stack developer, translating client business requirements into technical scope. GymMate and RestaurantOS are products I built on my own, from data model to interface. Business development roles at DAKAEi AI and Heritage Hotel Krone add a product and partnerships side to that engineering work.",
+    "At Koloniyas I worked as a co-founder and full-stack developer, translating client business requirements into technical scope. GymMate and RestaurantOS are products I built on my own, from data model to interface. I also worked in business development at DAKAEi AI and Heritage Hotel Krone.",
   ],
+  availability: "Currently available for freelance work.",
   languages: "English, Bosnian, Turkish",
 };
 
@@ -28,8 +29,13 @@ export const experience = [
     location: "Sarajevo, Bosnia and Herzegovina",
     type: "Self-employed",
     duration: "Jan 2025 - Feb 2026",
-    // The founder narrative lives on the Work page (Supporting and ventures), not here.
-    link: { type: "internal", label: "Venture on the Work page", href: "/work#koloniyas-title" },
+    // The company continues to operate; only the owner's own involvement ended (owner-stated).
+    // The venture write-up lives on the Work page (Supporting and ventures), not here.
+    description: "The company continues to operate. Only my own involvement ended.",
+    links: [
+      { type: "internal", label: "Venture on the Work page", href: "/work#koloniyas-title" },
+      { type: "live", label: "Koloniyas site", href: "https://koloniyas.ba/" },
+    ],
   },
   {
     slug: "dakaei",

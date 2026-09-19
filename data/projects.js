@@ -106,9 +106,14 @@ export const supportingProjects = [
     slug: "koloniyas",
     title: "Koloniyas",
     category: "Venture",
-    // Facts (role, dates) live on the Resume page, so they are not repeated here.
-    summary: "A company I co-founded. What I did there, and when, is on the Resume page.",
-    links: [{ type: "internal", label: "See Experience", href: "/resume" }],
+    // The company continues to operate; only the owner's involvement ended (owner-stated).
+    // Role details live on the Resume page.
+    summary:
+      "A company I co-founded. It continues to operate; my own involvement ran from Jan 2025 to Feb 2026. My role there is on the Resume page.",
+    links: [
+      { type: "live", label: "Koloniyas site", href: "https://koloniyas.ba/" },
+      { type: "internal", label: "See Experience", href: "/resume" },
+    ],
   },
   {
     slug: "eldix",

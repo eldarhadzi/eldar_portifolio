@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInitialLoad } from "@/components/InitialLoadProvider";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { site } from "@/data/site";
 import { summary, experience, education } from "@/data/experience";
 
@@ -17,31 +18,31 @@ const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent-d
 // skills data
 const skills = [
   // Programming languages
-  { icon: <FaHtml5 />, name: "HTML5" },
-  { icon: <FaCss3 />, name: "CSS3" },
-  { icon: <FaJs />, name: "JavaScript" },
-  { icon: <FaPython />, name: "Python" },
-  { icon: <SiC />, name: "C" },
+  { icon: <FaHtml5 />, name: "html 5" },
+  { icon: <FaCss3 />, name: "css 3" },
+  { icon: <FaJs />, name: "javascript" },
+  { icon: <FaPython />, name: "python" },
+  { icon: <SiC />, name: "c" },
 
   // Frameworks & libraries
-  { icon: <FaReact />, name: "React" },
-  { icon: <FaNodeJs />, name: "Node.js" },
-  { icon: <SiTailwindcss />, name: "Tailwind CSS" },
-  { icon: <SiExpress />, name: "Express.js" },
-  { icon: <SiNextdotjs />, name: "Next.js" },
+  { icon: <FaReact />, name: "react.js" },
+  { icon: <FaNodeJs />, name: "node.js" },
+  { icon: <SiTailwindcss />, name: "tailwind.css" },
+  { icon: <SiExpress />, name: "express.js" },
+  { icon: <SiNextdotjs />, name: "next.js" },
 
   // Databases & backend
-  { icon: <SiMongodb />, name: "MongoDB" },
-  { icon: <SiPostgresql />, name: "PostgreSQL" },
+  { icon: <SiMongodb />, name: "mongodb" },
+  { icon: <SiPostgresql />, name: "postgresql" },
 
   // Design tools
-  { icon: <FaFigma />, name: "Figma" },
-  { icon: <SiAdobephotoshop />, name: "Photoshop" },
+  { icon: <FaFigma />, name: "figma" },
+  { icon: <SiAdobephotoshop />, name: "photoshop" },
 
   // Programs & tools
-  { icon: <SiWordpress />, name: "WordPress" },
-  { icon: <SiJirasoftware />, name: "Jira" },
-  { icon: <SiDocker />, name: "Docker" },
+  { icon: <SiWordpress />, name: "wordpress" },
+  { icon: <SiJirasoftware />, name: "jira" },
+  { icon: <SiDocker />, name: "docker" },
 ];
 
 const sectionHeading = "text-[28px] xl:text-[36px] leading-[1.1] font-semibold mb-8";
@@ -71,7 +72,8 @@ const Resume = () => {
               <p key={text}>{text}</p>
             ))}
           </div>
-          <p className="mt-6 text-sm text-black/60">
+          <p className="mt-6 text-base text-black/80">{summary.availability}</p>
+          <p className="mt-3 text-sm text-black/60">
             <span className="uppercase tracking-[2px] text-accent-dark font-semibold mr-3">Languages</span>
             {summary.languages}
           </p>
@@ -101,14 +103,22 @@ const Resume = () => {
         {/* skills */}
         <section aria-labelledby="skills-title">
           <h2 id="skills-title" className={sectionHeading}>Skills</h2>
-          <ul className="flex flex-wrap gap-3">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
             {skills.map((skill) => (
-              <li
-                key={skill.name}
-                className="flex items-center gap-2 rounded-full border border-black/10 bg-surface px-4 py-2 text-sm text-black/80"
-              >
-                <span className="text-xl text-accent-dark" aria-hidden="true">{skill.icon}</span>
-                {skill.name}
+              <li key={skill.name}>
+                <TooltipProvider delayDuration={100}>
+                  <Tooltip>
+                    <TooltipTrigger
+                      aria-label={skill.name}
+                      className="w-full h-[150px] bg-surface border border-black/10 rounded-xl flex justify-center items-center group"
+                    >
+                      <div className="text-6xl group-hover:text-accent-dark transition-all duration-300">{skill.icon}</div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="capitalize">{skill.name}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </li>
             ))}
           </ul>

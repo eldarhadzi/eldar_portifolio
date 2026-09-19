@@ -28,9 +28,9 @@ const ExperienceTimeline = ({ items }) => {
           {item.description && (
             <p className="max-w-[640px] text-sm xl:text-base leading-relaxed text-black/80">{item.description}</p>
           )}
-          {item.link && (
+          {item.links && (
             <div className="mt-3">
-              <ProjectLinks links={[item.link]} />
+              <ProjectLinks links={item.links} />
             </div>
           )}
         </li>
