@@ -1,8 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-import { useInitialLoad } from "@/components/InitialLoadProvider";
+import PageFade from "@/components/PageFade";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import EducationCard from "@/components/EducationCard";
 import AchievementCard from "@/components/AchievementCard";
@@ -19,18 +15,11 @@ const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent-d
 
 const sectionHeading = "text-[28px] xl:text-[36px] leading-[1.1] font-semibold mb-8";
 
-const Resume = () => {
-  const initialLoad = useInitialLoad();
+export const metadata = { title: "Resume" };
 
+const Resume = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: initialLoad ? 2.4 : 0, duration: 0.4, ease: "easeIn" },
-      }}
-      className="py-12 xl:pb-24"
-    >
+    <PageFade className="py-12 xl:pb-24">
       <div className="container mx-auto flex flex-col gap-16 xl:gap-20">
         <h1 className="text-[44px] xl:text-[64px] leading-[1.05] font-semibold -mb-6">
           <span className="text-accent-dark">Resume</span>
@@ -91,7 +80,7 @@ const Resume = () => {
           </Button>
         </section>
       </div>
-    </motion.div>
+    </PageFade>
   );
 };
 

@@ -1,24 +1,13 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-import { useInitialLoad } from "@/components/InitialLoadProvider";
+import PageFade from "@/components/PageFade";
 import ProjectFeature from "@/components/ProjectFeature";
 import ProjectSupporting from "@/components/ProjectSupporting";
 import { featuredProjects, supportingProjects } from "@/data/projects";
 
-const Work = () => {
-  const initialLoad = useInitialLoad();
+export const metadata = { title: "Work" };
 
+const Work = () => {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: initialLoad ? 2.4 : 0, duration: 0.4, ease: "easeIn" },
-      }}
-      className="py-12 xl:pb-24"
-    >
+    <PageFade className="py-12 xl:pb-24">
       <div className="container mx-auto">
         <header className="mb-12 xl:mb-16 max-w-[640px]">
           <h1 className="text-[44px] xl:text-[64px] leading-[1.05] font-semibold mb-4">
@@ -48,7 +37,7 @@ const Work = () => {
           </div>
         </section>
       </div>
-    </motion.section>
+    </PageFade>
   );
 };
 

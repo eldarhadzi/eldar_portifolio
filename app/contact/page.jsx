@@ -1,6 +1,6 @@
 "use client";
 
-import { useInitialLoad } from "@/components/InitialLoadProvider";
+import PageFade from "@/components/PageFade";
 
 import React, { useState } from "react";
 
@@ -31,12 +31,9 @@ const info = [
   },
 ]
 
-import { motion } from "framer-motion";
 import { contact } from "@/data/site";
 
 const Contact = () => {
-  const initialLoad = useInitialLoad();
-
   const emptyForm = { firstname: "", lastname: "", email: "", phone: "", message: "", website: "" };
 
   const [formData, setFormData] = useState(emptyForm);
@@ -87,37 +84,30 @@ const Contact = () => {
   };
 
   return (
-    <motion.section
-      initial={{ opacity:0 }}
-      animate={{
-        opacity:1,
-        transition:{ delay: initialLoad ? 2.4 : 0, duration:0.4, ease: "easeIn" },
-      }}
-      className="py-6"
-    >
+    <PageFade className="py-6">
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[53%] order-2 xl:order-none">
             <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6 p-10 bg-surface border border-black/10 rounded-xl">
-              <h3 className="text-4xl text-accent-dark">Let's Work Together</h3>
+              <h1 className="text-4xl text-accent-dark">Let's Work Together</h1>
               <p className="text-black/60">Have a project in mind or just want to say hello? Drop me a message and I'll get back to you soon.</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <Input name="firstname" type="text" autoComplete="given-name" maxLength={LIMITS.name.max} value={formData.firstname} onChange={handleChange} placeholder="Firstname" aria-invalid={!!fieldErrors.firstname} className="w-full" />
-                  {fieldErrors.firstname && <p className="text-red-400 text-sm mt-2">{fieldErrors.firstname}</p>}
+                  <Input name="firstname" type="text" autoComplete="given-name" maxLength={LIMITS.name.max} value={formData.firstname} onChange={handleChange} placeholder="Firstname" aria-label="Firstname" aria-invalid={!!fieldErrors.firstname} aria-describedby={fieldErrors.firstname ? "firstname-error" : undefined} className="w-full" />
+                  {fieldErrors.firstname && <p id="firstname-error" className="text-red-700 text-sm mt-2">{fieldErrors.firstname}</p>}
                 </div>
                 <div>
-                  <Input name="lastname" type="text" autoComplete="family-name" maxLength={LIMITS.name.max} value={formData.lastname} onChange={handleChange} placeholder="Lastname" aria-invalid={!!fieldErrors.lastname} className="w-full" />
-                  {fieldErrors.lastname && <p className="text-red-400 text-sm mt-2">{fieldErrors.lastname}</p>}
+                  <Input name="lastname" type="text" autoComplete="family-name" maxLength={LIMITS.name.max} value={formData.lastname} onChange={handleChange} placeholder="Lastname" aria-label="Lastname" aria-invalid={!!fieldErrors.lastname} aria-describedby={fieldErrors.lastname ? "lastname-error" : undefined} className="w-full" />
+                  {fieldErrors.lastname && <p id="lastname-error" className="text-red-700 text-sm mt-2">{fieldErrors.lastname}</p>}
                 </div>
                 <div>
-                  <Input name="email" type="email" autoComplete="email" maxLength={LIMITS.email.max} value={formData.email} onChange={handleChange} placeholder="Email address" aria-invalid={!!fieldErrors.email} className="w-full" />
-                  {fieldErrors.email && <p className="text-red-400 text-sm mt-2">{fieldErrors.email}</p>}
+                  <Input name="email" type="email" autoComplete="email" maxLength={LIMITS.email.max} value={formData.email} onChange={handleChange} placeholder="Email address" aria-label="Email address" aria-invalid={!!fieldErrors.email} aria-describedby={fieldErrors.email ? "email-error" : undefined} className="w-full" />
+                  {fieldErrors.email && <p id="email-error" className="text-red-700 text-sm mt-2">{fieldErrors.email}</p>}
                 </div>
                 <div>
-                  <Input name="phone" type="tel" autoComplete="tel" maxLength={LIMITS.phone.max} value={formData.phone} onChange={handleChange} placeholder="Phone number (optional)" aria-invalid={!!fieldErrors.phone} className="w-full" />
-                  {fieldErrors.phone && <p className="text-red-400 text-sm mt-2">{fieldErrors.phone}</p>}
+                  <Input name="phone" type="tel" autoComplete="tel" maxLength={LIMITS.phone.max} value={formData.phone} onChange={handleChange} placeholder="Phone number (optional)" aria-label="Phone number (optional)" aria-invalid={!!fieldErrors.phone} aria-describedby={fieldErrors.phone ? "phone-error" : undefined} className="w-full" />
+                  {fieldErrors.phone && <p id="phone-error" className="text-red-700 text-sm mt-2">{fieldErrors.phone}</p>}
                 </div>
               </div>
 
@@ -139,11 +129,11 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   maxLength={LIMITS.message.max}
-                  aria-invalid={!!fieldErrors.message}
+                  aria-label="Message" aria-invalid={!!fieldErrors.message} aria-describedby={fieldErrors.message ? "message-error" : undefined}
                   className="h-[200px]"
                   placeholder="Type your message here."
                 />
-                {fieldErrors.message && <p className="text-red-400 text-sm mt-2">{fieldErrors.message}</p>}
+                {fieldErrors.message && <p id="message-error" className="text-red-700 text-sm mt-2">{fieldErrors.message}</p>}
               </div>
 
               <div className="flex flex-col gap-4">
@@ -153,7 +143,7 @@ const Contact = () => {
                 <p
                   role="status"
                   aria-live="polite"
-                  className={status.state === "success" ? "text-accent-dark" : "text-red-400"}
+                  className={status.state === "success" ? "text-accent-dark" : "text-red-700"}
                 >
                   {status.message}
                 </p>
@@ -167,12 +157,12 @@ const Contact = () => {
             <ul className="flex flex-col gap-10">
               {info.map((item, index)=>{
                 return <li key={index} className="flex items-center gap-6">
-                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-surface border border-black/10 text-accent-dark rounded-md flex items-center justify-center">
+                  <div className="shrink-0 w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-surface border border-black/10 text-accent-dark rounded-md flex items-center justify-center">
                     <div className="text-[28px]">{item.icon}</div>
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <p className="text-black/60">{item.title}</p>
-                    <h3 className="text-xl">{item.description}</h3>
+                    <p className="text-base sm:text-xl [overflow-wrap:anywhere]">{item.description}</p>
                   </div>
                 </li>
               })}
@@ -181,7 +171,7 @@ const Contact = () => {
         </div>
       </div>
 
-    </motion.section>
+    </PageFade>
   )
 }
 

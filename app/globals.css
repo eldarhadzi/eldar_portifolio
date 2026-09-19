@@ -30,7 +30,32 @@
   a, button, Button [role="button"] {
     cursor: url('/images/cursor_icon.cur'), pointer;
   }
-   
+
+  /* one keyboard focus style for every interactive element; components with their own
+     ring (outline-none + focus-visible:ring-*) override this with the same look */
+  :focus-visible {
+    outline: 2px solid theme('colors.accent.dark');
+    outline-offset: 4px;
+  }
+}
+
+/* respect prefers-reduced-motion: no entrance overlay, and CSS transitions/animations
+   (hover, tooltip, sheet) resolve instantly */
+@media (prefers-reduced-motion: reduce) {
+  .entrance-overlay {
+    display: none !important;
+  }
+  /* fade-ins show immediately; framer sets opacity inline, so this needs !important */
+  .reveal {
+    opacity: 1 !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 
