@@ -1,14 +1,15 @@
 import { motion } from "framer-motion"
 
 const stairAnimation = {
+  // transform, not `top`: animating `top` counts as layout shift (CLS) and is not compositor-only
   initial: {
-    top: "0%"
+    y: "0%"
   },
   animate: {
-    top: "100%"
+    y: "100%"
   },
   exit: {
-    top: ["100%", "0%"]
+    y: ["100%", "0%"]
   }
 }
 

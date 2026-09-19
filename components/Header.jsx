@@ -12,7 +12,7 @@ const Header = () => {
         <div className="container mx-auto flex justify-between items-center">
 
           {/* logo */}
-          <Link href="/" aria-label={`${site.name}, home`} className={`rounded-sm ${focusRing}`}>
+          <Link href="/" aria-label={`${site.name}, home`} className={`relative rounded-sm after:absolute after:-inset-y-1 after:inset-x-0 ${focusRing}`}>
             <span className="block text-4xl font-semibold">
               {site.shortName}
               <span className="text-accent-dark">.</span>

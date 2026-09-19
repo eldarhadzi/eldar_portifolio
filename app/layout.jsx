@@ -13,7 +13,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata = {
-  title: site.name,
+  title: { default: site.name, template: `%s | ${site.name}` },
   description: site.description,
   icons: {
     icon:{
