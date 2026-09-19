@@ -1,9 +1,14 @@
 import PageFade from "@/components/PageFade";
+import { pageMetadata } from "@/lib/seo";
 import ProjectFeature from "@/components/ProjectFeature";
 import ProjectSupporting from "@/components/ProjectSupporting";
 import { featuredProjects, supportingProjects } from "@/data/projects";
 
-export const metadata = { title: "Work" };
+export const metadata = pageMetadata({
+  title: "Work",
+  description: "Four projects: GymMate, Eoned Education, Vertex Banking, and RestaurantOS, with the role and current status for each.",
+  path: "/work",
+});
 
 const Work = () => {
   return (

@@ -1,4 +1,5 @@
 import PageFade from "@/components/PageFade";
+import { pageMetadata } from "@/lib/seo";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import EducationCard from "@/components/EducationCard";
 import AchievementCard from "@/components/AchievementCard";
@@ -15,7 +16,11 @@ const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent-d
 
 const sectionHeading = "text-[28px] xl:text-[36px] leading-[1.1] font-semibold mb-8";
 
-export const metadata = { title: "Resume" };
+export const metadata = pageMetadata({
+  title: "Resume",
+  description: "Experience and education of Eldar Hadžović: mobile development at Promet Bilgi Sistemleri, earlier full-stack work, and a B.S. in Software Engineering.",
+  path: "/resume",
+});
 
 const Resume = () => {
   return (

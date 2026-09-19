@@ -11,6 +11,10 @@ export const site = {
     since: "Feb 2026",
   },
   cvHref: "/assets/resume/eldar-hadzovic-cv.pdf",
+  // canonical origin for metadata, sitemap and structured data
+  url: "https://eldar-hadzovic-cv.vercel.app",
+  // existing hero photo, reused as the link-preview image (550x453)
+  ogImage: { path: "/assets/eldarone.png", width: 550, height: 453, alt: "Portrait of Eldar Hadžović" },
 };
 
 export const contact = {

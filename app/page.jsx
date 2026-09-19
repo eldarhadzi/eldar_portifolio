@@ -2,9 +2,28 @@ import Photo from "@/components/Photo";
 import Socials from "@/components/Socials";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-import { site, contact } from "@/data/site";
+import { site, contact, socialLinks } from "@/data/site";
+import { pageMetadata } from "@/lib/seo";
 
 const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent-dark focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
+
+export const metadata = pageMetadata({
+  title: { absolute: `${site.name} | Software Engineer` },
+  description: "Software engineer building products across web, mobile, and backend systems. Currently a Mobile Application Developer at Promet Bilgi Sistemleri.",
+  path: "/",
+});
+
+// Person structured data: only facts already on the site. GitHub and LinkedIn are profiles;
+// the WhatsApp link is a chat link, not a profile, so it is not listed in sameAs.
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  image: `${site.url}${site.ogImage.path}`,
+  jobTitle: site.currentRole.title,
+  sameAs: socialLinks.filter((link) => link.type === "github" || link.type === "linkedin").map((link) => link.href),
+};
 
 const Home = () => {
   const [firstName, ...rest] = site.name.split(" ");
@@ -13,6 +32,10 @@ const Home = () => {
 
   return (
     <section className="h-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(person).replace(/</g, "\\u003c") }}
+      />
       <div className="container mx-auto h-full">
         <div className="flex flex-col xl:flex-row items-center justify-between gap-8 xl:gap-16 pb-12 xl:pt-4 xl:pb-16">
 
