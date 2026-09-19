@@ -33,12 +33,12 @@ export const featuredProjects = [
     // Summary: the repo README's own description.
     summary:
       "A course platform where professors publish courses and students follow them and track their progress.",
-    // Role and origin: owner stated it started from an open tutorial and was extended.
-    role: "Developer. Extended an open tutorial project",
+    // Role and origin: owner stated it is built on an open tutorial project. No customization is claimed.
+    role: "Developer. Built from an open tutorial project",
     origin: "Built on an open tutorial project",
-    // Contribution: kept to what is verified. The specific custom features are not recorded anywhere yet.
+    // Contribution: stack only, from the repo. Nothing beyond the tutorial is claimed.
     contribution:
-      "Started from an open tutorial project for a course platform and extended it with custom design and additional features. It uses React with Vite, an Express and MongoDB server, Clerk for authentication, and Stripe for payments.",
+      "Built from an open tutorial project for a course platform. It uses React with Vite, an Express and MongoDB server, Clerk for authentication, and Stripe for payments.",
     stack: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Clerk", "Stripe"],
     status: "Deployed demo",
     links: [
@@ -52,16 +52,17 @@ export const featuredProjects = [
     slug: "vertex-banking",
     title: "Vertex Banking",
     category: "Full-stack",
+    // Owner-stated framing: one of the first substantial projects, a learning project.
     summary:
-      "A banking dashboard built with Next.js and TypeScript, with account sign-up and login, transaction history and transfer pages, and Plaid and Dwolla integrations for linking banks and moving money.",
-    // Role: all 5 commits in the repo are by the owner.
+      "One of my first substantial projects, built to learn. A banking dashboard in Next.js and TypeScript with sign-up and login, transaction history and transfer pages, and Plaid and Dwolla integrations for linking banks and moving money.",
+    // Role: all 5 commits in the repo are by the owner. No "original work" claim is made.
     role: "Sole developer",
     // Contribution: commit history, repo layout, dependencies. The last commit is
     // "Implement plaid link and dwolla. Not Working.", so that is stated plainly.
     contribution:
       "Set up the Next.js and TypeScript project, built the layout and the transaction history and payment transfer pages, added a chart of account balances, and wired up authentication with Appwrite and error monitoring with Sentry. I also added the Plaid Link and Dwolla integrations, which were not working at the last commit.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Appwrite", "Plaid", "Dwolla", "Chart.js", "Sentry"],
-    status: "Unfinished. Source only, no live deployment",
+    status: "Early project. Plaid and Dwolla integration incomplete",
     links: [
       { type: "live", label: "Live site", href: "" },
       { type: "repo", label: "Source", href: "https://github.com/eldarhadzi/vertex_banking" },
@@ -72,18 +73,18 @@ export const featuredProjects = [
     slug: "restaurantos",
     title: "RestaurantOS",
     category: "Product",
-    // Summary: the Eldix site's own description (in Bosnian), and its own early-stage wording.
+    // Summary: owner-stated description.
     summary:
-      "Restaurant management software from Eldix that brings reservations, tables, staff, guests and orders into one system. It is at an early stage and has no revenue yet.",
-    // Role: no team-size claim. Solo versus team has not been confirmed for this project.
-    role: "Developer",
+      "A SaaS product for managing restaurant operations: reservations, floor plans, ordering, and menus. Under active development.",
+    // Role: owner confirmed solo.
+    role: "Sole developer",
     // Contribution: stack from the private repo (Angular 20 frontend, Spring Boot 3 backend on Java 21,
     // Postgres) and features as listed on the Eldix site. The repo is private, so those features are
     // described as the site describes them, not verified in the running app.
     contribution:
       "Developed with an Angular frontend, a Spring Boot backend and a Postgres database. The Eldix site lists drag-and-drop floor plans, a QR code menu that needs no login, orders sent by table to a kitchen display, role-based staff permissions, and custom branding.",
     stack: ["Angular", "TypeScript", "Java", "Spring Boot", "PostgreSQL"],
-    status: "Early stage, pre-revenue. The Eldix product site is live",
+    status: "Early stage, pre-revenue, under active development. The Eldix product site is live",
     links: [
       { type: "live", label: "Eldix site", href: "https://eldix-site.vercel.app" },
       // The restaurant-os repository is private, so there is no source link.

@@ -51,7 +51,8 @@ Every claim on the site must trace to a verified source: the CV (`public/assets/
 - Do not fill gaps by guessing. Report the gap and ask.
 - Do not list a technology unless there is evidence of use (a project, a job entry, or the repo).
 - Do not name clients. Promet Bilgi Sistemleri is described generically as mobile development for a major Turkish telecom operator.
-- RestaurantOS and Eldix are early stage and pre-revenue (owner-stated). The Eldix product site (eldix-site.vercel.app) is live; the `restaurant-os` and `eldix-site` repositories are private, so there is no source link. Never describe the application as launched or mature, and make no team-size claims until solo versus team is confirmed.
+- RestaurantOS (under Eldix) is a SaaS product for restaurant operations, early stage, pre-revenue and under active development, built solo (owner-confirmed, shown as "Sole developer"). The Eldix product site (eldix-site.vercel.app) is live; the `restaurant-os` and `eldix-site` repositories are private, so there is no source link. Never describe the application as launched or mature, and do not use "our team" language.
+- Vertex Banking is an early learning project (one of the first substantial ones), built solo, with the Plaid and Dwolla integration incomplete. Do not describe it as finished or as "original work". Eoned Education is built from an open tutorial project (badge on the Work page); claim no customization until specific changes are documented.
 - Placeholder or demo content in project screenshots (for example the "Trusted by" logos in the Eoned thumbnail) must not be presented as clients or results.
 
 ## Verified Content Snapshot
