@@ -4,10 +4,13 @@ import { motion } from "framer-motion";
 
 import { useInitialLoad } from "@/components/InitialLoadProvider";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
+import EducationCard from "@/components/EducationCard";
+import AchievementCard from "@/components/AchievementCard";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { site } from "@/data/site";
-import { summary, experience, education } from "@/data/experience";
+import { summary, experience } from "@/data/experience";
+import { education, achievements } from "@/data/education";
 
 import { FiDownload } from "react-icons/fi";
 import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython } from "react-icons/fa";
@@ -89,13 +92,11 @@ const Resume = () => {
         <section aria-labelledby="education-title">
           <h2 id="education-title" className={sectionHeading}>Education</h2>
           <ul className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {education.map((item) => (
-              <li key={item.institution} className="rounded-lg border border-black/10 bg-surface p-6 flex flex-col gap-1">
-                <p className="text-sm text-accent-dark font-semibold">{item.duration}</p>
-                <h3 className="text-[20px] leading-[1.2] font-semibold">{item.degree}</h3>
-                <p className="text-black/80">{item.institution}</p>
-                {item.detail && <p className="text-sm text-black/60">{item.detail}</p>}
-              </li>
+            {education.map(({ slug, ...item }) => (
+              <EducationCard key={slug} {...item} />
+            ))}
+            {achievements.map(({ slug, ...item }) => (
+              <AchievementCard key={slug} {...item} />
             ))}
           </ul>
         </section>

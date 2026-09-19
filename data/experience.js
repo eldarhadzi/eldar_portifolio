@@ -77,23 +77,3 @@ export const experience = [
       "Built and managed a WordPress site for a client, produced promotional materials and an advertisement video, and assisted with workstation maintenance and network installation.",
   },
 ];
-
-export const education = [
-  {
-    institution: "Ostim Technical University",
-    degree: "B.S. Software Engineering",
-    duration: "Graduated Jun 2026",
-    detail: "GPA 3.81/4.00",
-  },
-  {
-    institution: "First Bosniak Gymnasium",
-    degree: "Mathematics & Information Technology",
-    duration: "Graduated Jun 2022",
-    detail: "GPA 4.89/5.00",
-  },
-  {
-    institution: "Bosnia Bank International",
-    degree: "1st Place, BBI League of Negotiation",
-    duration: "Mar 2021",
-  },
-];
