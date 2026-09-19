@@ -21,7 +21,7 @@ Portfolio site for Eldar Hadžović. One identity: software engineer who builds 
 
 From `tailwind.config.js`:
 
-- `primary` (page background): `#e4e4e7` (light gray)
+- `primary` (page background): `#F5F7F2`
 - `accent`: `#00ff99`
 - `accent-hover`: `#00e187`
 - `accent-dark`: `#00693f` (green for text, underlines, focus rings, bullets and icons on the light gray background; `accent` `#00ff99` is for fills such as buttons)
@@ -29,7 +29,7 @@ From `tailwind.config.js`:
 Hardcoded in components and CSS:
 
 - Text: black (`text-black`, with `/60` and `/80` opacity variants for secondary text)
-- Card surfaces: `#d4d4d8` (Resume cards, tabs list, Contact form and icon tiles)
+- `surface` (cards and panels): `#F5F7F2`, the same as the page background, separated by a 1px `border-black/10` border (Resume cards, tabs, Contact form and icon tiles, Work icon buttons)
 - Outline text stroke (`globals.css`): `#000000`, hover `#00ff99`
 - Social brand colors (`components/Socials.jsx`): GitHub `#181717`, LinkedIn `#0077B5` (hover `#005582`), WhatsApp `#25D366` (hover `#128C7E`)
 

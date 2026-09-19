@@ -135,7 +135,7 @@ const Work = () => {
                   <Link href={project.live}>
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
-                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-black/5 flex justify-center items-center group">
+                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-surface border border-black/10 flex justify-center items-center group">
                           <BsArrowUpRight className="text-black text-3xl group-hover:text-accent-dark" />
                         </TooltipTrigger>
                         <TooltipContent>
@@ -149,7 +149,7 @@ const Work = () => {
                   <Link href={project.github}>
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
-                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-black/5 flex justify-center items-center group">
+                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-surface border border-black/10 flex justify-center items-center group">
                           <BsGithub className="text-black text-3xl group-hover:text-accent-dark" />
                         </TooltipTrigger>
                         <TooltipContent>
