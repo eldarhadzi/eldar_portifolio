@@ -3,10 +3,15 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { usePathname } from "next/navigation"
 import Stairs from "./Stairs";
+import { useInitialLoad } from "./InitialLoadProvider";
 
 const StairTransition = () => {
 
   const pathname = usePathname()
+  const initialLoad = useInitialLoad()
+
+  // the wipe is an entrance effect: fresh visits and hard refreshes only
+  if (!initialLoad) return null
 
   return (
     <>

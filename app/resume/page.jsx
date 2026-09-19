@@ -1,5 +1,7 @@
 "use client";
 
+import { useInitialLoad } from "@/components/InitialLoadProvider";
+
 import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython  } from "react-icons/fa"
 import { SiTailwindcss ,SiExpress, SiNextdotjs, SiMongodb, SiPostgresql, SiJirasoftware, SiWordpress, SiC, SiDocker, SiAdobephotoshop  } from "react-icons/si"
 
@@ -201,12 +203,13 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
 
 const Resume = () => {
+  const initialLoad = useInitialLoad();
   return (
     <motion.div 
       initial={{ opacity:0 }}
       animate={{
         opacity:1,
-        transition:{ delay:2.4, duration:0.4, ease: "easeIn" },
+        transition:{ delay: initialLoad ? 2.4 : 0, duration:0.4, ease: "easeIn" },
       }}
       className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-5"
     >

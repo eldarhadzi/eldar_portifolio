@@ -2,19 +2,22 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useInitialLoad } from "./InitialLoadProvider";
 
 const Photo = () => {
+  const initialLoad = useInitialLoad();
+
   return (
     <div className="w-full h-full relative flex items-center justify-center">
       <motion.div 
         initial={{ opacity:0 }} 
-        animate={{ opacity:1, transition: {delay:2, duration:0.4, ease:"easeIn"} 
+        animate={{ opacity:1, transition: {delay: initialLoad ? 2 : 0, duration:0.4, ease:"easeIn"} 
       }}>
 
         {/* image */}
         <motion.div
           initial={{ opacity:0 }} 
-          animate={{ opacity:1, transition: {delay:2.4, duration:0.4, ease:"easeInOut"} 
+          animate={{ opacity:1, transition: {delay: initialLoad ? 2.4 : 0, duration:0.4, ease:"easeInOut"} 
         }}
          className="w-[288px] h-[288px] xl:w-[488px] xl:h-[488px] rounded-full overflow-hidden absolute mix-blend-lighten">
           <Image 

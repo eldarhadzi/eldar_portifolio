@@ -1,5 +1,7 @@
 "use client";
 
+import { useInitialLoad } from "@/components/InitialLoadProvider";
+
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
@@ -76,6 +78,7 @@ const projects = [
 
 
 const Work = () => {
+  const initialLoad = useInitialLoad();
 
   const [project, setProject] = useState(projects[0]);
 
@@ -94,7 +97,7 @@ const Work = () => {
       initial={{ opacity:0 }}
       animate={{
         opacity:1,
-        transition:{ delay:2.4, duration:0.4, ease: "easeIn" },
+        transition:{ delay: initialLoad ? 2.4 : 0, duration:0.4, ease: "easeIn" },
       }}
       className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
       >

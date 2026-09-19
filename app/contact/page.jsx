@@ -1,5 +1,7 @@
 "use client";
 
+import { useInitialLoad } from "@/components/InitialLoadProvider";
+
 import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -33,6 +35,7 @@ import { motion } from "framer-motion";
 import { contact } from "@/data/site";
 
 const Contact = () => {
+  const initialLoad = useInitialLoad();
 
   const emptyForm = { firstname: "", lastname: "", email: "", phone: "", message: "", website: "" };
 
@@ -88,7 +91,7 @@ const Contact = () => {
       initial={{ opacity:0 }}
       animate={{
         opacity:1,
-        transition:{ delay:2.4, duration:0.4, ease: "easeIn" },
+        transition:{ delay: initialLoad ? 2.4 : 0, duration:0.4, ease: "easeIn" },
       }}
       className="py-6"
     >
