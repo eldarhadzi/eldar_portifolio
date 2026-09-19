@@ -1,47 +1,86 @@
 # CLAUDE.md
 
-## Stack
+Portfolio site for Eldar Hadžović. One identity: software engineer who builds products. Business and entrepreneurial experience is supporting context in the Experience section, not a separate persona.
+
+## Tech Stack
 
 - **Framework**: Next.js 14.2.28 (App Router), React 18.3.1
-- **Language**: JavaScript (JSX, not TypeScript — `tsx: false` in components.json)
-- **Styling**: Tailwind CSS 3.3.5 + `tailwindcss-animate`, custom theme (primary `#1c1c22`, accent `#00ff99`), dark mode via `class` strategy
-- **UI components**: shadcn/ui (style: default, baseColor: slate, cssVariables: true) on top of Radix UI primitives (`dialog`, `scroll-area`, `select`, `slot`, `tabs`, `tooltip`); components live in `components/ui`
-- **Animation**: Framer Motion, custom page/stair transitions (`PageTransition.jsx`, `Stairs.jsx`, `StairTransition.jsx`)
+- **Language**: JavaScript (JSX, not TypeScript; `tsx: false` in components.json)
+- **Styling**: Tailwind CSS 3.3.5 + `tailwindcss-animate`, dark mode via `class` strategy
+- **UI components**: shadcn/ui (style: default, baseColor: slate, cssVariables: true) on Radix UI primitives (`dialog`, `scroll-area`, `select`, `slot`, `tabs`, `tooltip`); components live in `components/ui`
+- **Animation**: Framer Motion; page/stair transitions in `PageTransition.jsx`, `Stairs.jsx`, `StairTransition.jsx`
 - **Icons**: lucide-react, react-icons
-- **Other libs**: swiper (carousels), react-countup (stats), nodemailer (contact form email, via `app/api`), class-variance-authority, clsx, tailwind-merge (className utilities in `lib/utils.js`)
-- **Package manager**: npm (`package-lock.json` present; no yarn.lock/pnpm-lock.yaml)
-- **Linting**: ESLint 8 with `eslint-config-next`
-- **Path aliases**: `@/*` → project root (jsconfig.json)
+- **Other libs**: swiper (Work carousel), react-countup (currently unused), nodemailer (contact email), class-variance-authority, clsx, tailwind-merge (`lib/utils.js`)
+- **Font**: JetBrains Mono via `next/font/google` (`--font-jetbrainsMono`)
+- **Package manager**: npm
+- **Linting**: ESLint 8 with `eslint-config-next`. One known warning is allowed: missing `alt` on the `<Image>` in `app/work/page.jsx`.
+- **Path alias**: `@/*` maps to the project root (`jsconfig.json`)
+- **Breakpoints**: sm 640, md 768, lg 960, xl 1200
 
-## Git / Commit Conventions
+## Colors
 
-- Commits must look like normal human commits: plain conventional message, no trailers, no attribution lines. This is also enforced globally via `~/.claude/settings.json` (`attribution.commit`/`attribution.pr` set to `""`, `attribution.sessionUrl: false`, `includeCoAuthoredBy: false`).
+From `tailwind.config.js`:
 
-## Identity & Positioning (locked)
+- `primary`: `#1c1c22`
+- `accent`: `#00ff99`
+- `accent-hover`: `#00e187`
 
-This is a two-audience site. Do not blend the two tones on the same page, and do not quietly collapse this back into one tone.
+Hardcoded in components and CSS:
 
-- **Home / Resume / Work**: engineer-candidate framing. Leads with software engineering identity — role, stack, what he builds. Founder/business-dev background may appear as a supporting line, never as the headline.
-- **Services**: business-dev/consulting framing. Allowed — expected — to lead with deal-closing/negotiation language; do not soften it to match Home's tone. The page opens with an explicit reframing line (e.g. "Looking to build something together?") so the tonal shift from Home reads as intentional, not accidental.
-- Resume's Experience timeline reflects real history (CEO/Co-Founder, Business Development Manager, etc.) — it is not rewritten into engineering-sounding titles.
+- Card surfaces: `#232329` (Resume cards), `#27272c` (Contact form and icon tiles)
+- Outline text stroke (`globals.css`): `#ffffff`, hover `#00ff99`
+- Social brand colors (`components/Socials.jsx`): GitHub `#181717`, LinkedIn `#0077B5` (hover `#005582`), WhatsApp `#25D366` (hover `#128C7E`)
+
+## Tone Rules
+
+BANNED: sales-pitch language, motivational language, exaggerated claims, "visionary"/"industry-leading"/"next-generation" style phrasing, self-congratulatory statements, generic personal-brand language.
+
+WANTED: state what was built plainly, explain role directly, describe technical decisions without hedging, let the work provide credibility, avoid unnecessary disclaimers.
+
+Example — BANNED: "Leading with vision, negotiating with confidence, and managing like a pro."
+
+Example — WANTED: "I build software products across web, mobile, and backend systems, with a focus on turning ideas into working products."
+
+## No-Fabrication Rule
+
+Every claim on the site must trace to a verified source: the CV (`public/assets/resume/Eldar Hadzovic cv.docx`), the repository, a deployed project, or a fact the owner has stated directly.
+
+- No invented statistics, counts, ratings, clients, metrics, or technologies. If a number can't be verified, omit it. The old homepage stats (11 projects, 17 technologies mastered, 128 commits) were fabricated and were removed; do not reintroduce them.
+- Do not fill gaps by guessing. Report the gap and ask.
+- Do not list a technology unless there is evidence of use (a project, a job entry, or the repo).
+- Do not name clients. Promet Bilgi Sistemleri is described generically as mobile development for a major Turkish telecom operator.
+- RestaurantOS and Eldix are in development. Describe them as in development, evidenced by their GitHub repositories, never as launched products or live deployments.
+- Placeholder or demo content in project screenshots (for example the "Trusted by" logos in the Eoned thumbnail) must not be presented as clients or results.
+
+## Verified Content Snapshot
+
+Experience (Resume page):
+
+- Promet Bilgi Sistemleri, Mobile Application Developer, Feb 2026 - Present
+- Koloniyas D.o.o., Co-Founder & Full-Stack Developer, Jan 2025 - Feb 2026 (ended)
+- DAKAEi AI, Business Development Manager, Nov 2024 - Present
+- Heritage Hotel Krone, Agency Relations Officer, Oct 2024 - Present
+- HaydeSoft, Frontend Developer, Mar 2023 - Jun 2023
+- Simurg Media D.o.o., Undergraduate Technical Assistant, Jan 2021 - Jun 2021
+
+Education: Ostim Technical University, B.S. Software Engineering, 2022 - Sep 2026, GPA 3.65/4.00. First Bosniak Gymnasium, Mathematics & Information Technologies, 2018 - Jun 2022, GPA 4.89/5.00. Achievement: BBI League of Negotiation, 1st place, Mar 2021.
+
+## Project Scope
+
+- **Services and business-development framing are permanently removed from project scope.** There is no Services page, no services nav entry, and no service-type selector on the contact form. Do not add a service menu, consulting offering, or a separate business-development persona back in any form.
+- Business and entrepreneurial roles (DAKAEi AI, Heritage Hotel Krone, Koloniyas) appear as supporting context in Experience.
+- Pages: Home, Resume, Work, Contact.
 
 ## Known Issues Backlog
 
-- [x] Homepage stat counters (`components/Stats.jsx`) rendered with no numeric value. Fixed 2026-09-14 — see Session Log.
-- [x] Home hero (`app/page.jsx`) read "Business Technologist" / "Coding. Connecting. Conquering deals." — didn't lead with engineering identity. Fixed 2026-09-24 — see Session Log.
-- [x] Services page (`app/services/page.jsx`) lacked an explicit reframing line and led with Negotiation/Project Management instead of Web Development/UI/UX Design. Fixed 2026-09-24. Logo Design and SEO Optimization were flagged as generic filler; user confirmed keeping both, so no removal — closing this item as resolved.
-- [x] Resume (`app/resume/page.jsx`) About me copy blended engineer and business-dev framing ("leadership roles... blending technical skills with business acumen"), against the Identity & Positioning rule. No "Prompt 4 findings" exist anywhere (not in this file, not in git history); user confirmed proceeding on judgment. Rewrote to lean technical. Fixed 2026-09-24 — see Session Log.
+- [ ] Contact API is broken: `app/api/contact.js` is not an App Router route (needs `app/api/contact/route.js` exporting `POST`), and the handler uses the Pages Router `(req, res)` signature. Form submissions 404. Also logs request data and the password length, and interpolates unescaped input into HTML. Scheduled for the next phase.
+- [ ] Work page: `github` links are empty for all projects and Vertex Banking has no `live` link, so the buttons point at `href=""`.
+- [ ] Skills list on the Resume page includes items with no evidence of use in the repo or projects (C, PostgreSQL). Needs the owner's confirmation before changes.
+- [ ] `README.md` is stale (wrong CV path, placeholder clone URL, nonexistent `styles/` folder).
+- [ ] Visual redesign is a later phase. Do not change color tokens, typography, spacing, or layout during content-only work.
 
-## Status Snapshot
+## Git / Commit Conventions
 
-- Homepage stat counters (Years of experience / Projects completed / Technologies mastered / Code commits) render their real values (3 / 11 / 17 / 128) directly in SSR output; `react-countup`'s count-up animation runs client-side as a progressive enhancement on top, not a prerequisite for the numbers being visible.
-- Home hero (`app/page.jsx`) eyebrow reads "Software Engineer & Builder"; one-liner reads "From idea to shipped product — with the business chops to fund it." Leads with engineering identity, founder/business-dev is a supporting clause, per Identity & Positioning.
-- Services page (`app/services/page.jsx`) opens with "Looking to build something together?" and lists all 6 services in order: Web Development, UI/UX Design, Negotiation, Project Management, Logo Design, SEO Optimization. Nothing removed — user chose to keep Logo Design and SEO Optimization.
-- Resume (`app/resume/page.jsx`) About me now leans technical (stack, end-to-end ownership, cross-functional teams) instead of blending in business-acumen language. Experience timeline (CEO/Co-Founder, Business Development Manager, etc.) is untouched, as instructed — real history, not rewritten.
-- Work page untouched this session, per instruction.
-
-## Session Log
-
-- **2026-09-14**: Initial setup session. Verified `git config user.name`/`user.email` (eldarhadzi / eldarhadzovic03@gmail.com, set globally, matches user) — no changes needed. Confirmed no repo-level git config, hooks, or commit template injected attribution trailers. Found that Claude Code's own default behavior would append a `Co-Authored-By` trailer / session link to commits; disabled this globally in `~/.claude/settings.json` by setting `attribution.commit`/`attribution.pr` to `""` and `attribution.sessionUrl` to `false` (plus the deprecated `includeCoAuthoredBy: false` for backward compat). Filled in this file's Stack section from repo inspection. No application code touched.
-- **2026-09-14**: Fixed homepage stat counter bug in `components/Stats.jsx`. Root cause: `react-countup`'s default (non-render-prop) usage renders an empty `<span>` — it only shows `props.start` formatted, which was never passed — and countup.js then writes the real digits into that span imperatively, client-side only, after mount (and only after the hardcoded 2s `delay`). So the real numbers never existed in SSR/initial DOM output and stayed blank without JS. The underlying data (`stats` array: 3 years experience, 11 projects, 17 technologies, 128 commits) was already correct and untouched — this was a rendering bug, not a data bug. Fix: switched to `react-countup`'s render-prop (`children` as a function) API so the `<span>` always renders the real number as normal React children (present in SSR/DOM immediately); `delay={0}` keeps `CountUp`'s auto-start-on-mount behavior enabled so the count-up animation still plays as an enhancement once JS loads. Verified via `curl` against the Next.js dev server that the real numbers (3/11/17/128) are present in the raw SSR HTML, and visually in Chrome that the stats render and animate correctly. `npm run lint` passes (one pre-existing, unrelated warning in `app/work/page.jsx`).
-- **2026-09-24**: Positioning/copy session. Before starting, found local `main` was behind `origin/main` by 3 commits ("add my whatsapp number", "update first page" — changed the hero eyebrow from "Software Developer" to "Business Technologist", "tab title change") pushed outside this session; rebased the local stat-counter-fix commit onto `origin/main` cleanly (no conflicts) before touching anything. Added the "Identity & Positioning" section above — it did not previously exist in this file, so there was nothing to "read as locked"; wrote it directly from this session's instructions rather than inventing content. Implemented Services page changes: added the "Looking to build something together?" reframing line and reordered `services` in `app/services/page.jsx` (Web Development, UI/UX Design, Negotiation, Project Management, then Logo Design, SEO Optimization). Flagged Logo Design/SEO Optimization as generic filler and asked before removing; user chose to keep both, so left them in place at the end of the list, nothing deleted. Drafted 3 headline/one-liner options for the Home hero rather than picking one unilaterally; user picked "Software Engineer & Builder" / "From idea to shipped product — with the business chops to fund it." and that's what shipped in `app/page.jsx`. For Resume `about.description` in `app/resume/page.jsx`: asked about the "Prompt 4 findings" referenced in the instructions, since no record of them exists anywhere in this file or `git log`; user confirmed no such findings exist and to use judgment, so rewrote the About me blurb to lean technical (stack, end-to-end ownership) and dropped the "leadership roles... blending technical skills with business acumen" language that blended the two audiences' tones — Experience timeline and Skills list left untouched. Work page untouched, per instruction. Verified all three changes with `npm run lint` (clean, same pre-existing unrelated warning in `app/work/page.jsx`) and visually in Chrome.
+- Work on the `redesign` branch.
+- Plain conventional commit messages (`fix:`, `docs:`, `feat:`, etc.). No trailers, no attribution lines, no co-author lines. This is also enforced globally via `~/.claude/settings.json` (`attribution.commit`/`attribution.pr` set to `""`, `attribution.sessionUrl: false`, `includeCoAuthoredBy: false`).
+- Before committing, `npm run lint` and `next build` must pass with no new errors.
