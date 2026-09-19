@@ -19,7 +19,7 @@ const Photo = () => {
           initial={{ opacity:0 }} 
           animate={{ opacity:1, transition: {delay: initialLoad ? 2.4 : 0, duration:0.4, ease:"easeInOut"} 
         }}
-         className="w-[288px] h-[288px] xl:w-[488px] xl:h-[488px] rounded-full overflow-hidden absolute mix-blend-lighten">
+         className="w-[288px] h-[288px] xl:w-[488px] xl:h-[488px] rounded-full overflow-hidden absolute">
           <Image 
             src="/assets/eldarone.png" 
             priority 

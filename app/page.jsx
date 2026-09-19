@@ -16,7 +16,7 @@ const Home = () => {
             <h1 className="h1 mb-6">
               Hello I'm <br /> <span className="text-accent">Eldar Hadžović</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white/80">
+            <p className="max-w-[500px] mb-9 text-black/80">
             I build software products across web, mobile, and backend systems, with a focus on turning ideas into working products.
             </p>
 

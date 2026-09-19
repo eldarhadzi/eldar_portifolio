@@ -8,7 +8,7 @@ const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent f
 
 const Header = () => {
   return (
-    <header className="py-8 xl:py-12 text-white">
+    <header className="py-8 xl:py-12 text-black">
         <div className="container mx-auto flex justify-between items-center">
 
           {/* logo */}
