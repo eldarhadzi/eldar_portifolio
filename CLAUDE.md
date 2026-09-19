@@ -75,6 +75,14 @@ Education: Ostim Technical University, B.S. Software Engineering, graduated Jun 
 - Business and entrepreneurial roles (Koloniyas, DAKAEi AI, Heritage Hotel Krone) appear as supporting context in Experience.
 - Pages: Home, Resume, Work, Contact.
 
+## Accessibility and Motion Conventions
+
+- Reduced motion: `InitialLoadProvider` exposes `useReduceMotion()` and `useFadeTransition()`. Fade-ins use `PageFade` (or `useFadeTransition`) and add the `reveal` class; entrance overlays add `entrance-overlay`. `globals.css` hides overlays, shows `.reveal` content, and zeroes CSS transition/animation durations under `prefers-reduced-motion: reduce`. Any new animation must respect this.
+- Never animate `top`/`left`/`width`/`height` on entrance effects (counts as layout shift); animate `transform` and `opacity`.
+- Focus: `globals.css` sets one global `:focus-visible` outline (2px `accent-dark`, 4px offset). Components that use `outline-none` must add the matching `focus-visible:ring-2 ring-accent-dark ring-offset-4 ring-offset-primary` classes.
+- Form fields get an `aria-label` (placeholder-only is not a label) and `aria-describedby` for their error message. Every page has exactly one `h1`.
+- Pages that need no client state stay server components; wrap them in `PageFade` instead of `"use client"` (keeps icon data out of the browser bundle).
+
 ## Known Issues Backlog
 
 - [ ] Contact API is broken: `app/api/contact.js` is not an App Router route (needs `app/api/contact/route.js` exporting `POST`), and the handler uses the Pages Router `(req, res)` signature. Form submissions 404. Also logs request data and the password length, and interpolates unescaped input into HTML. Scheduled for the next phase.
