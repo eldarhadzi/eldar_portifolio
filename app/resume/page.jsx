@@ -6,7 +6,7 @@ import { SiTailwindcss ,SiExpress, SiNextdotjs, SiMongodb, SiPostgresql, SiJiras
 // about data
 const about = {
   title: 'About me',
-  description: "I'm a Software Engineering student at Ostim Technical University, focused on full-stack development — React and Next.js on the front end, Node and Express APIs backed by MongoDB or PostgreSQL, containerized with Docker. I'm comfortable owning a feature end-to-end, from a Figma mockup to a shipped, working product, and I like working in cross-functional teams where I can move fast on real technical problems.",
+  description: "I'm a software engineer with a B.S. in Software Engineering from Ostim Technical University. I work across web, mobile, and backend systems: React and Next.js on the front end, Node.js and Express APIs with MongoDB, and mobile application development. I've built full-stack applications from Figma mockup to deployed product, and I've co-founded a company where I worked as a full-stack developer.",
   info: [ 
   {
     fieldName: "Name",
@@ -15,10 +15,6 @@ const about = {
   {
     fieldName: "Phone",
     fieldValue: "+387 61 880 853"
-  },
-  {
-    fieldName: "Experience",
-    fieldValue: "3+ Years"
   },
   {
     fieldName: "Email",
@@ -39,13 +35,18 @@ const about = {
 const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My experience",
-  description: "Diverse experience across leadership, business development, and software engineering roles in both startup and corporate environments. I’ve co-founded a company, driven B2B growth, and contributed to full-stack development projects, combining technical expertise with strategic vision.",
+  description: "I'm a Mobile Application Developer at Promet Bilgi Sistemleri, building mobile applications for a major Turkish telecom operator. Before that I co-founded Koloniyas D.o.o. and worked there as a full-stack developer. I've also done business development work at DAKAEi AI (B2B pitches and sales) and Heritage Hotel Krone (travel agency partnerships).",
   items:[
     {
+      company: "Promet Bilgi Sistemleri",
+      position: "Mobile Application Developer",
+      duration: "Feb 2026 - Present",
+    },
+    {
       company: "Koloniyas D.o.o.",
-      position: "CEO / Co-Founder",
+      position: "Co-Founder & Full-Stack Developer",
       location: "Bosnia and Herzegovina, Sarajevo",
-      duration: "Jan 2025 - Present",
+      duration: "Jan 2025 - Feb 2026",
     },
     {
       company: "DAKAEi AI",
@@ -54,16 +55,22 @@ const experience = {
       duration: "Nov 2024 - Present",
     },
     {
+      company: "Heritage Hotel Krone",
+      position: "Agency Relations Officer",
+      location: "Bosnia and Herzegovina, Sarajevo",
+      duration: "Oct 2024 - Present",
+    },
+    {
       company: "HaydeSoft",
       position: "Frontend Developer",
       location: "Turkiye, Ankara",
-      duration: "Mar 2023 - Jul 2023",
+      duration: "Mar 2023 - Jun 2023",
     },
     {
       company: "Simurg Media D.o.o.",
       position: "Undergraduate Technical Assistant",
       location: "Bosnia and Herzegovina, Sarajevo",
-      duration: "Jan 2021 - Jul 2021",
+      duration: "Jan 2021 - Jun 2021",
     },
   ]
 };
@@ -72,17 +79,22 @@ const experience = {
 const education = {
   icon: "/assets/resume/cap.svg",
   title: "My education",
-  description: "A solid academic foundation in software engineering, complemented by a strong secondary education in mathematics and IT. My studies have equipped me with both theoretical knowledge and practical skills in full-stack development, algorithms, and problem-solving.",
+  description: "B.S. in Software Engineering, with a secondary education in mathematics and information technologies. Also includes a first-place result in the BBI League of Negotiation.",
   items:[
     {
       institution: "Ostim Technical University",
-      degree: "Software Engineering (English)",
-      duration: "2022 - Present"
+      degree: "B.S. Software Engineering (English)",
+      duration: "2022 - Sep 2026 | GPA 3.65/4.00"
     },
     {
       institution: "First Bosniak Gymnasium",
       degree: "Mathematics & Information Technologies",
-      duration: "2018 - 2022",
+      duration: "2018 - Jun 2022 | GPA 4.89/5.00",
+    },
+    {
+      institution: "Bosnia Bank International",
+      degree: "1st Place, BBI League of Negotiation",
+      duration: "Mar 2021",
     },
   ]
 }
