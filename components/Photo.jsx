@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useInitialLoad } from "./InitialLoadProvider";
 
 const Photo = () => {
   const initialLoad = useInitialLoad();
+  const reduceMotion = useReducedMotion();
 
   return (
     <div className="w-full h-full relative flex items-center justify-center">
@@ -19,7 +20,7 @@ const Photo = () => {
           initial={{ opacity:0 }} 
           animate={{ opacity:1, transition: {delay: initialLoad ? 2.4 : 0, duration:0.4, ease:"easeInOut"} 
         }}
-         className="w-[288px] h-[288px] xl:w-[488px] xl:h-[488px] rounded-full overflow-hidden absolute">
+         className="w-[208px] h-[208px] sm:w-[288px] sm:h-[288px] xl:w-[488px] xl:h-[488px] rounded-full overflow-hidden absolute">
           <Image 
             src="/assets/eldarone.png" 
             priority 
@@ -32,7 +33,7 @@ const Photo = () => {
 
         {/* circle */}
         <motion.svg 
-          className="w-[295px] xl:w-[500px] h-[295px] xl:h-[500px]" 
+          className="w-[215px] sm:w-[295px] xl:w-[500px] h-[215px] sm:h-[295px] xl:h-[500px]" 
           fill="transparent"
           viewBox="0 0 506 506"
           xmlns=""
@@ -46,7 +47,7 @@ const Photo = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             initial={{strokeDasharray: "24 10 0 0"}}
-            animate={{
+            animate={reduceMotion ? {} : {
               strokeDasharray: ["15 120 25 25", "16 25 92 72", "4 250 22 22"],
               rotate: [120, 360],
             }}

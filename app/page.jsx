@@ -2,44 +2,50 @@ import Photo from "@/components/Photo";
 import Socials from "@/components/Socials";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-import Link from "next/link";
+import { site, contact } from "@/data/site";
+
+const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent-dark focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
 
 const Home = () => {
+  const [firstName, ...rest] = site.name.split(" ");
+  const lastName = rest.join(" ");
+  const city = contact.location.split(",")[0];
+
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
-        <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-8 xl:gap-16 pb-12 xl:pt-4 xl:pb-16">
 
           {/* text */}
-          <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Software Engineer & Builder</span>
-            <h1 className="h1 mb-6">
-              Hello I'm <br /> <span className="text-accent-dark">Eldar Hadžović</span>
+          <div className="text-center xl:text-left order-2 xl:order-none max-w-[560px]">
+            <p className="text-sm xl:text-base uppercase tracking-[2px] text-accent-dark font-semibold mb-3">
+              {site.headline}
+            </p>
+            <h1 className="text-[44px] sm:text-[56px] xl:text-[80px] leading-[1.05] font-semibold mb-6">
+              <span className="block">{firstName}</span>
+              <span className="block text-accent-dark">{lastName}</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-black/80">
-            I build software products across web, mobile, and backend systems, with a focus on turning ideas into working products.
+            <p className="mb-6 text-base xl:text-lg leading-relaxed text-black/80">
+              I build software products across web, mobile, and backend systems, with a focus on turning ideas into working products.
+            </p>
+            <p className="mb-8 xl:mb-10 text-sm leading-relaxed text-black/80 xl:border-l-2 xl:border-accent-dark xl:pl-4">
+              Currently a {site.currentRole.title} at {site.currentRole.company}, an Ankara-based company, working remotely from {city}.
             </p>
 
             {/* button and socials */}
-            <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button 
-                variant="outline" 
-                size="lg" 
-                >
-                  <Link href="/assets/resume/eldar-hadzovic-cv.pdf" download
-                  className="uppercase flex items-center gap-2">
-                    <span>Download CV</span>
-                    <FiDownload className="text-xl" />
-                  </Link>
+            <div className="flex flex-col xl:flex-row items-center gap-6 xl:gap-8">
+              <Button asChild variant="outline" size="lg" className={focusRing}>
+                <a href={site.cvHref} download>
+                  <span>Download CV</span>
+                  <FiDownload className="ml-2 text-xl" aria-hidden="true" />
+                </a>
               </Button>
-              <div className="mb-8 xl:mb-0">
-              <Socials containerStyles="flex gap-6" />
-              </div>
+              <Socials containerStyles="flex gap-3" />
             </div>
           </div>
 
-          {/* phone */}
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
+          {/* photo */}
+          <div className="order-1 xl:order-none">
             <Photo />
           </div>
         </div>
@@ -49,4 +55,3 @@ const Home = () => {
 }
 
 export default Home
-
