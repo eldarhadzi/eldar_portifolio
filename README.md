@@ -36,7 +36,7 @@ eldar_portifolio/
 
 You can download the CV directly from the website. It is located at:
 
-📁 `public/assets/resume/eldarcV.doc`
+📁 `public/assets/resume/eldar-hadzovic-cv.pdf`
 
 Or from the app interface using the **Download CV** button.
 

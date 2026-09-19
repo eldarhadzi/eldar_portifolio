@@ -43,7 +43,7 @@ Example — WANTED: "I build software products across web, mobile, and backend s
 
 ## No-Fabrication Rule
 
-Every claim on the site must trace to a verified source: the CV (`public/assets/resume/Eldar Hadzovic cv.docx`), the repository, a deployed project, or a fact the owner has stated directly.
+Every claim on the site must trace to a verified source: the CV (`public/assets/resume/eldar-hadzovic-cv.pdf`), the repository, a deployed project, or a fact the owner has stated directly.
 
 - No invented statistics, counts, ratings, clients, metrics, or technologies. If a number can't be verified, omit it. The old homepage stats (11 projects, 17 technologies mastered, 128 commits) were fabricated and were removed; do not reintroduce them.
 - Do not fill gaps by guessing. Report the gap and ask.

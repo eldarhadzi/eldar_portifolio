@@ -26,7 +26,7 @@ const Home = () => {
                 variant="outline" 
                 size="lg" 
                 >
-                  <Link href="/assets/resume/Eldar Hadzovic cv.docx" download
+                  <Link href="/assets/resume/eldar-hadzovic-cv.pdf" download
                   className="uppercase flex items-center gap-2">
                     <span>Download CV</span>
                     <FiDownload className="text-xl" />
