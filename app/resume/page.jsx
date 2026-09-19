@@ -1,328 +1,132 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 import { useInitialLoad } from "@/components/InitialLoadProvider";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
+import { Button } from "@/components/ui/button";
+import { site } from "@/data/site";
+import { summary, experience, education } from "@/data/experience";
 
-import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython  } from "react-icons/fa"
-import { SiTailwindcss ,SiExpress, SiNextdotjs, SiMongodb, SiPostgresql, SiJirasoftware, SiWordpress, SiC, SiDocker, SiAdobephotoshop  } from "react-icons/si"
+import { FiDownload } from "react-icons/fi";
+import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs, FaPython } from "react-icons/fa";
+import { SiTailwindcss, SiExpress, SiNextdotjs, SiMongodb, SiPostgresql, SiJirasoftware, SiWordpress, SiC, SiDocker, SiAdobephotoshop } from "react-icons/si";
 
-// about data
-const about = {
-  title: 'About me',
-  description: "I'm a software engineer with a B.S. in Software Engineering from Ostim Technical University. I work across web, mobile, and backend systems: React and Next.js on the front end, Node.js and Express APIs with MongoDB, and mobile application development. I've built full-stack applications from Figma mockup to deployed product, and I've co-founded a company where I worked as a full-stack developer.",
-  info: [ 
-  {
-    fieldName: "Name",
-    fieldValue: "Eldar Hadzovic"
-  },
-  {
-    fieldName: "Phone",
-    fieldValue: "+387 61 880 853"
-  },
-  {
-    fieldName: "Email",
-    fieldValue: "eldarhadzovic03@gmail.com"
-  },
-  {
-    fieldName: "Freelance",
-    fieldValue: "Available"
-  },
-  {
-    fieldName: "Languages",
-    fieldValue: "English, Bosnian, Turkish"
-  },
-]
-};
-
-//experience data
-const experience = {
-  icon: "/assets/resume/badge.svg",
-  title: "My experience",
-  description: "I'm a Mobile Application Developer at Promet Bilgi Sistemleri, building mobile applications for a major Turkish telecom operator. Before that I co-founded Koloniyas D.o.o. and worked there as a full-stack developer. I've also done business development work at DAKAEi AI (B2B pitches and sales) and Heritage Hotel Krone (travel agency partnerships).",
-  items:[
-    {
-      company: "Promet Bilgi Sistemleri",
-      position: "Mobile Application Developer",
-      duration: "Feb 2026 - Present",
-    },
-    {
-      company: "Koloniyas D.o.o.",
-      position: "Co-Founder & Full-Stack Developer",
-      location: "Bosnia and Herzegovina, Sarajevo",
-      duration: "Jan 2025 - Feb 2026",
-    },
-    {
-      company: "DAKAEi AI",
-      position: "Business Development Manager",
-      location: "Turkiye, Ankara",
-      duration: "Dec 2024 - Jan 2026",
-    },
-    {
-      company: "Heritage Hotel Krone",
-      position: "Agency Relations Officer",
-      location: "Bosnia and Herzegovina, Sarajevo",
-      duration: "Oct 2024 - Dec 2025",
-    },
-    {
-      company: "HaydeSoft",
-      position: "Frontend Developer",
-      location: "Turkiye, Ankara",
-      duration: "Mar 2023 - Jun 2023",
-    },
-    {
-      company: "Simurg Media D.o.o.",
-      position: "Undergraduate Technical Assistant",
-      location: "Bosnia and Herzegovina, Sarajevo",
-      duration: "Jan 2021 - Jun 2021",
-    },
-  ]
-};
-
-// education data
-const education = {
-  icon: "/assets/resume/cap.svg",
-  title: "My education",
-  description: "B.S. in Software Engineering, with a secondary education in mathematics and information technologies. Also includes a first-place result in the BBI League of Negotiation.",
-  items:[
-    {
-      institution: "Ostim Technical University",
-      degree: "B.S. Software Engineering",
-      duration: "Graduated Jun 2026 | GPA 3.81/4.00"
-    },
-    {
-      institution: "First Bosniak Gymnasium",
-      degree: "Mathematics & Information Technology",
-      duration: "Graduated Jun 2022 | GPA 4.89/5.00",
-    },
-    {
-      institution: "Bosnia Bank International",
-      degree: "1st Place, BBI League of Negotiation",
-      duration: "Mar 2021",
-    },
-  ]
-}
-
-// diploma data
-const certificates = {
-  title: "My Certificates",
-  items: [
-    {
-      diploma: "Bosnia Bank International League of Negotiation",
-      achivement: "1st Place"
-    }
-  ]
-}
+const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent-dark focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
 
 // skills data
-const skills = {
-  title: "My skills",
-  description: "A versatile set of development, design, and DevOps skills gained through academic training and real-world experience.",
-  skillList: [
-    // Programming Languages
-    {
-      icon: <FaHtml5 /> ,
-      name: "html 5",
-    },
-    {
-      icon: <FaCss3 />,
-      name: "css 3",
-    },
-    {
-      icon: <FaJs />,
-      name: "javascript",
-    },
-    {
-      icon: <FaPython />,
-      name: "python",
-    },
-    {
-      icon: <SiC />,
-      name: "c",
-    },
+const skills = [
+  // Programming languages
+  { icon: <FaHtml5 />, name: "HTML5" },
+  { icon: <FaCss3 />, name: "CSS3" },
+  { icon: <FaJs />, name: "JavaScript" },
+  { icon: <FaPython />, name: "Python" },
+  { icon: <SiC />, name: "C" },
 
-    // Frameworks & Libraries
-    {
-      icon: <FaReact />,
-      name: "react.js",
-    },
-    {
-      icon: <FaNodeJs />,
-      name: "node.js",
-    },
-    {
-      icon: <SiTailwindcss />,
-      name: "tailwind.css",
-    },
-    {
-      icon: <SiExpress />,
-      name: "express.js",
-    },
-    {
-      icon: <SiNextdotjs />,
-      name: "next.js",
-    },
+  // Frameworks & libraries
+  { icon: <FaReact />, name: "React" },
+  { icon: <FaNodeJs />, name: "Node.js" },
+  { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+  { icon: <SiExpress />, name: "Express.js" },
+  { icon: <SiNextdotjs />, name: "Next.js" },
 
-    // Databases & Backend
-    {
-      icon: <SiMongodb />,
-      name: "mongodb",
-    },
-    {
-      icon: <SiPostgresql />,
-      name: "postgresql",
-    },
+  // Databases & backend
+  { icon: <SiMongodb />, name: "MongoDB" },
+  { icon: <SiPostgresql />, name: "PostgreSQL" },
 
-    // Design Tools
-    {
-      icon: <FaFigma />,
-      name: "figma",
-    },
-    {
-      icon: <SiAdobephotoshop />,
-      name: "photoshop",
-    },
+  // Design tools
+  { icon: <FaFigma />, name: "Figma" },
+  { icon: <SiAdobephotoshop />, name: "Photoshop" },
 
-    // Programs & Tools
-    {
-      icon: <SiWordpress />,
-      name: "wordpress",
-    },
-    {
-      icon: <SiJirasoftware />,
-      name: "jira",
-    },
-    {
-      icon: <SiDocker />,
-      name: "docker",
-    },
-  ]
-}
+  // Programs & tools
+  { icon: <SiWordpress />, name: "WordPress" },
+  { icon: <SiJirasoftware />, name: "Jira" },
+  { icon: <SiDocker />, name: "Docker" },
+];
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { motion } from "framer-motion";
+const sectionHeading = "text-[28px] xl:text-[36px] leading-[1.1] font-semibold mb-8";
 
 const Resume = () => {
   const initialLoad = useInitialLoad();
+
   return (
-    <motion.div 
-      initial={{ opacity:0 }}
+    <motion.div
+      initial={{ opacity: 0 }}
       animate={{
-        opacity:1,
-        transition:{ delay: initialLoad ? 2.4 : 0, duration:0.4, ease: "easeIn" },
+        opacity: 1,
+        transition: { delay: initialLoad ? 2.4 : 0, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-5"
+      className="py-12 xl:pb-24"
     >
-      <div className="container mx-auto">
-        <Tabs 
-          defaultValue="experience" 
-          className="flex flex-col xl:flex-row gap-[60px]"
-        >
-          <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
-            <TabsTrigger value="experience">Experience</TabsTrigger>
-            <TabsTrigger value="education">Education</TabsTrigger>
-            <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="about">About me</TabsTrigger>
-          </TabsList>
+      <div className="container mx-auto flex flex-col gap-16 xl:gap-20">
+        <h1 className="text-[44px] xl:text-[64px] leading-[1.05] font-semibold -mb-6">
+          <span className="text-accent-dark">Resume</span>
+        </h1>
 
-          {/* content */}
-          <div className="min-h-[70vh] w-full">
-
-            {/* experience */}
-            <TabsContent value="experience" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-black/60 mx-auto xl:mx-0">{experience.description}</p>
-                <ScrollArea className="h-[400px] overflow-auto">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                    {experience.items.map((item, index)=>{
-                      return <li key={index} className="bg-surface border border-black/10 h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1">
-                        <span className="text-accent-dark">{item.duration}</span>
-                        <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">{item.position}</h3>
-                        <div className="flex items-center gap-3">
-                          <span className="w-[6px] h-[6px] rounded-full bg-accent-dark"></span>
-                          <p className="text-black/80">{item.company}</p>
-                        </div>
-                      </li>
-                    })}
-                  </ul>
-                </ScrollArea>
-              </div>
-            </TabsContent>
-
-            {/* education */}
-            <TabsContent value="education" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{education.title}</h3>
-                <p className="max-w-[600px] text-black/60 mx-auto xl:mx-0">{education.description}</p>
-                <ScrollArea className="h-[400px]">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                    {education.items.map((item, index)=>{
-                      return <li key={index} className="bg-surface border border-black/10 h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1">
-                        <span className="text-accent-dark">{item.duration}</span>
-                        <h3 className="text-xl max-w-[300px] min-h-[70px] text-center lg:text-left">{item.degree}</h3>
-                        <div className="flex items-center gap-3">
-                          <span className="w-[6px] h-[6px] rounded-full bg-accent-dark mt-3"></span>
-                          <p className="text-black/80 mt-3">{item.institution}</p>
-                        </div>
-                      </li>
-                    })}
-                  </ul>
-                </ScrollArea>
-              </div>
-            </TabsContent>
-
-            {/* skills */}
-            <TabsContent value="skills" className="w-full h-full">
-              <div className="flex flex-col gap-[30px]">
-                <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                  <h3 className="text-4xl font-bold">{skills.title}</h3>
-                  <p className="max-w-[600px] text-black/60 mx-auto xl:mx-0">{skills.description}</p>
-                </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                  {skills.skillList.map((skill, index)=>{
-                    return <li key={index}>
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-full h-[150px] bg-surface border border-black/10 rounded-xl flex justify-center items-center group">
-                            <div className="text-6xl group-hover:text-accent-dark transition-all duration-300">{skill.icon}</div>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="capitalize">{skill.name}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </li>
-                  })}
-                </ul>
-              </div>
-            </TabsContent>
-
-            {/* about */}
-            <TabsContent value="about" className="w-full text-center xl:text-left">
-              <div className="flex flex-col gap-[30px]">
-                <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[700px] text-black/60 mx-auto xl:mx-0">{about.description}</p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[710px] mx-auto xl:mx-0">
-                  {about.info.map((item, index)=>{
-                    return <li 
-                              key={index}
-                              className="flex items-center justify-center xl:justify-start gap-4"
-                            >
-                      <span className="text-black/60">{item.fieldName}</span>
-                      <span className="text-black">{item.fieldValue}</span>
-                    </li>
-                  })}
-                </ul>
-              </div>
-            </TabsContent>
-
+        {/* summary */}
+        <section aria-labelledby="summary-title" className="max-w-[720px]">
+          <h2 id="summary-title" className={sectionHeading}>Summary</h2>
+          <div className="flex flex-col gap-4 text-base xl:text-lg leading-relaxed text-black/80">
+            {summary.paragraphs.map((text) => (
+              <p key={text}>{text}</p>
+            ))}
           </div>
-        </Tabs>
+          <p className="mt-6 text-sm text-black/60">
+            <span className="uppercase tracking-[2px] text-accent-dark font-semibold mr-3">Languages</span>
+            {summary.languages}
+          </p>
+        </section>
+
+        {/* experience */}
+        <section aria-labelledby="experience-title">
+          <h2 id="experience-title" className={sectionHeading}>Experience</h2>
+          <ExperienceTimeline items={experience} />
+        </section>
+
+        {/* education */}
+        <section aria-labelledby="education-title">
+          <h2 id="education-title" className={sectionHeading}>Education</h2>
+          <ul className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {education.map((item) => (
+              <li key={item.institution} className="rounded-lg border border-black/10 bg-surface p-6 flex flex-col gap-1">
+                <p className="text-sm text-accent-dark font-semibold">{item.duration}</p>
+                <h3 className="text-[20px] leading-[1.2] font-semibold">{item.degree}</h3>
+                <p className="text-black/80">{item.institution}</p>
+                {item.detail && <p className="text-sm text-black/60">{item.detail}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* skills */}
+        <section aria-labelledby="skills-title">
+          <h2 id="skills-title" className={sectionHeading}>Skills</h2>
+          <ul className="flex flex-wrap gap-3">
+            {skills.map((skill) => (
+              <li
+                key={skill.name}
+                className="flex items-center gap-2 rounded-full border border-black/10 bg-surface px-4 py-2 text-sm text-black/80"
+              >
+                <span className="text-xl text-accent-dark" aria-hidden="true">{skill.icon}</span>
+                {skill.name}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* download cv */}
+        <section aria-labelledby="cv-title" className="border-t border-black/10 pt-12">
+          <h2 id="cv-title" className={sectionHeading}>CV</h2>
+          <Button asChild variant="outline" size="lg" className={focusRing}>
+            <a href={site.cvHref} download>
+              <span>Download CV</span>
+              <FiDownload className="ml-2 text-xl" aria-hidden="true" />
+            </a>
+          </Button>
+        </section>
       </div>
-
     </motion.div>
-  )
-}
+  );
+};
 
-export default Resume
+export default Resume;
