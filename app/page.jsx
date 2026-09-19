@@ -1,6 +1,5 @@
 import Photo from "@/components/Photo";
 import Socials from "@/components/Socials";
-import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 import Link from "next/link";
@@ -18,11 +17,7 @@ const Home = () => {
               Hello I'm <br /> <span className="text-accent">Eldar Hadžović</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-            I'm a driven, creative problem-solver who builds big ideas into reality—leading
-            with vision, negotiating with confidence, and managing like a pro.
-            </p>
-            <p className="font-semibold text-white mb-4">
-            From idea to shipped product — with the business chops to fund it.
+            I build software products across web, mobile, and backend systems, with a focus on turning ideas into working products.
             </p>
 
             {/* button and socials */}
@@ -31,7 +26,7 @@ const Home = () => {
                 variant="outline" 
                 size="lg" 
                 >
-                  <Link href="/assets/resume/Eldar Hadzovic cv.docx" download
+                  <Link href="/assets/resume/eldar-hadzovic-cv.pdf" download
                   className="uppercase flex items-center gap-2">
                     <span>Download CV</span>
                     <FiDownload className="text-xl" />
@@ -49,7 +44,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Stats />
     </section>
   )
 }
