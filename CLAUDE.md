@@ -24,6 +24,7 @@ From `tailwind.config.js`:
 - `primary` (page background): `#e4e4e7` (light gray)
 - `accent`: `#00ff99`
 - `accent-hover`: `#00e187`
+- `accent-dark`: `#00693f` (green for text, underlines, focus rings, bullets and icons on the light gray background; `accent` `#00ff99` is for fills such as buttons)
 
 Hardcoded in components and CSS:
 

@@ -111,7 +111,7 @@ const Work = () => {
                   {project.num}
                 </div>
 
-                <h2 className="text-[42px] font-bold leading-none text-black group-hover:text-accent transition-all duration-500 capitalize">
+                <h2 className="text-[42px] font-bold leading-none text-black group-hover:text-accent-dark transition-all duration-500 capitalize">
                   {project.category} project
                 </h2>
 
@@ -120,7 +120,7 @@ const Work = () => {
                 <ul className="flex flex-wrap gap-2 max-w-full">
                   {project.stack.map((item, index)=>{
                     return (
-                      <li key={index} className="text-xl text-accent">
+                      <li key={index} className="text-xl text-accent-dark">
                         {item.name}
                         {index !== project.stack.length - 1 && ","}
                       </li>
@@ -136,7 +136,7 @@ const Work = () => {
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
                         <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-black/5 flex justify-center items-center group">
-                          <BsArrowUpRight className="text-black text-3xl group-hover:text-accent" />
+                          <BsArrowUpRight className="text-black text-3xl group-hover:text-accent-dark" />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Live project</p>
@@ -150,7 +150,7 @@ const Work = () => {
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
                         <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-black/5 flex justify-center items-center group">
-                          <BsGithub className="text-black text-3xl group-hover:text-accent" />
+                          <BsGithub className="text-black text-3xl group-hover:text-accent-dark" />
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Github repository</p>

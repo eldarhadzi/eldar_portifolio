@@ -14,7 +14,7 @@ const Home = () => {
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className="text-xl">Software Engineer & Builder</span>
             <h1 className="h1 mb-6">
-              Hello I'm <br /> <span className="text-accent">Eldar Hadžović</span>
+              Hello I'm <br /> <span className="text-accent-dark">Eldar Hadžović</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-black/80">
             I build software products across web, mobile, and backend systems, with a focus on turning ideas into working products.

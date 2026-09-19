@@ -7,7 +7,7 @@ import { usePathname} from "next/navigation";
 import { CiMenuFries } from "react-icons/ci";
 import { navLinks, site } from "@/data/site";
 
-const focusRing = "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
+const focusRing = "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-accent-dark focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
 
 const MobileNav = () => {
 
@@ -25,7 +25,7 @@ const MobileNav = () => {
         aria-label="Open menu"
         className={`flex justify-center items-center p-2 -m-2 ${focusRing}`}
       >
-        <CiMenuFries className="text-[32px] text-accent"/>
+        <CiMenuFries className="text-[32px] text-accent-dark"/>
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <SheetTitle className="sr-only">Navigation menu</SheetTitle>
@@ -34,7 +34,7 @@ const MobileNav = () => {
         <div className="mt-32 mb-40 text-center text-2xl">
           <Link href="/" aria-label={`${site.name}, home`} onClick={() => setOpen(false)} className={focusRing}>
             <span className="text-4xl font-semibold">
-              {site.shortName}<span className="text-accent">.</span>
+              {site.shortName}<span className="text-accent-dark">.</span>
             </span>
           </Link>
         </div>
@@ -49,7 +49,7 @@ const MobileNav = () => {
               key={link.href} 
               aria-current={active ? "page" : undefined}
               onClick={() => setOpen(false)}
-              className={`${active ? "text-accent border-b-2 border-accent" : ""} py-2 text-xl capitalize hover:text-accent ${focusRing}`}>
+              className={`${active ? "text-accent-dark border-b-2 border-accent-dark" : ""} py-2 text-xl capitalize hover:text-accent-dark ${focusRing}`}>
               {link.label}
             </Link>
             )

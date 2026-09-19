@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 import { site, headerCta } from "@/data/site";
 
-const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
+const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent-dark focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
 
 const Header = () => {
   return (
@@ -15,7 +15,7 @@ const Header = () => {
           <Link href="/" aria-label={`${site.name}, home`} className={`rounded-sm ${focusRing}`}>
             <span className="block text-4xl font-semibold">
               {site.shortName}
-              <span className="text-accent">.</span>
+              <span className="text-accent-dark">.</span>
             </span>
           </Link>
 

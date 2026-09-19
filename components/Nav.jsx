@@ -17,7 +17,7 @@ const Nav = () => {
         href={link.href}
         key={link.href}
         aria-current={active ? "page" : undefined}
-        className={`${active ? "text-accent border-b-2 border-accent" : ""} capitalize font-medium hover:text-accent transition-all outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-primary`}
+        className={`${active ? "text-accent-dark border-b-2 border-accent-dark" : ""} capitalize font-medium hover:text-accent-dark transition-all outline-none focus-visible:ring-2 focus-visible:ring-accent-dark focus-visible:ring-offset-4 focus-visible:ring-offset-primary`}
       >
         {link.label}
       </Link>

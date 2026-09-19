@@ -12,7 +12,7 @@ const Socials = ({ containerStyles }) => {
   return (
     <div className={containerStyles}>
       {socialLinks.map((item) => {
-        const baseStyle = "w-9 h-9 rounded-full flex justify-center items-center text-base hover:scale-110 transition-all duration-300 border border-white outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
+        const baseStyle = "w-9 h-9 rounded-full flex justify-center items-center text-base hover:scale-110 transition-all duration-300 border border-white outline-none focus-visible:ring-2 focus-visible:ring-accent-dark focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
         
         const colorStyle =
           item.type === "github"
