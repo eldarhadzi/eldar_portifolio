@@ -35,3 +35,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .claude/skills/
+
+# audit script output
+scripts/audit/*.png
+scripts/audit/*.txt
