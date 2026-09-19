@@ -1,4 +1,4 @@
-import Link from "next/link"
+import IconLink from "./IconLink"
 import { socialLinks } from "@/data/site"
 import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 
@@ -12,7 +12,7 @@ const Socials = ({ containerStyles }) => {
   return (
     <div className={containerStyles}>
       {socialLinks.map((item) => {
-        const baseStyle = "w-9 h-9 rounded-full flex justify-center items-center text-base hover:scale-110 transition-all duration-300 border border-white";
+        const baseStyle = "w-9 h-9 rounded-full flex justify-center items-center text-base hover:scale-110 transition-all duration-300 border border-white outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
         
         const colorStyle =
           item.type === "github"
@@ -24,15 +24,14 @@ const Socials = ({ containerStyles }) => {
             : "bg-accent text-white";
 
             return (
-              <Link
+              <IconLink
                 key={item.type}
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                label={item.label}
                 className={`${baseStyle} ${colorStyle}`}
               >
                 {icons[item.type]}
-              </Link>
+              </IconLink>
             );
           })}
         </div>

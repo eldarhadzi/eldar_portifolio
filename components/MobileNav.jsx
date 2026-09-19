@@ -1,39 +1,55 @@
 "use client";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useEffect, useState } from "react";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
 import { usePathname} from "next/navigation";
 import { CiMenuFries } from "react-icons/ci";
 import { navLinks, site } from "@/data/site";
 
+const focusRing = "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
+
 const MobileNav = () => {
 
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
+
+  // close the menu once navigation has happened
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
   return (
-    <Sheet>
-      <SheetTrigger className="flex justify-center items-center">
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger
+        aria-label="Open menu"
+        className={`flex justify-center items-center p-2 -m-2 ${focusRing}`}
+      >
         <CiMenuFries className="text-[32px] text-accent"/>
       </SheetTrigger>
       <SheetContent className="flex flex-col">
+        <SheetTitle className="sr-only">Navigation menu</SheetTitle>
 
         {/* logo */}
         <div className="mt-32 mb-40 text-center text-2xl">
-          <Link href="/">
-            <h1 className="text-4xl font-semibold">
+          <Link href="/" aria-label={`${site.name}, home`} onClick={() => setOpen(false)} className={focusRing}>
+            <span className="text-4xl font-semibold">
               {site.shortName}<span className="text-accent">.</span>
-            </h1>
+            </span>
           </Link>
         </div>
 
         {/* nav */}
-        <nav className="flex flex-col justify-center items-center gap-8">
+        <nav aria-label="Main" className="flex flex-col justify-center items-center gap-4">
           {navLinks.map((link)=>{
+            const active = link.href === pathname;
             return (
             <Link 
               href={link.href} 
               key={link.href} 
-              className={` ${link.href === pathname ? "text-accent border-b-2 border-accent" : ""} text-xl capitalize hover:text-accent`}>
+              aria-current={active ? "page" : undefined}
+              onClick={() => setOpen(false)}
+              className={`${active ? "text-accent border-b-2 border-accent" : ""} py-2 text-xl capitalize hover:text-accent ${focusRing}`}>
               {link.label}
             </Link>
             )

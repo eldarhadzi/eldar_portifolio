@@ -4,25 +4,27 @@ import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 import { site, headerCta } from "@/data/site";
 
+const focusRing = "outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-primary";
+
 const Header = () => {
   return (
     <header className="py-8 xl:py-12 text-white">
         <div className="container mx-auto flex justify-between items-center">
 
           {/* logo */}
-          <Link href="/">
-            <h1 className="text-4xl font-semibold">
+          <Link href="/" aria-label={`${site.name}, home`} className={`rounded-sm ${focusRing}`}>
+            <span className="block text-4xl font-semibold">
               {site.shortName}
               <span className="text-accent">.</span>
-            </h1>
+            </span>
           </Link>
 
           {/* desktop nav */}
           <div className="hidden xl:flex items-center gap-8">
             <Nav />
-            <Link href={headerCta.href}>
-              <Button>{headerCta.label}</Button>
-            </Link>
+            <Button asChild className={focusRing}>
+              <Link href={headerCta.href}>{headerCta.label}</Link>
+            </Button>
           </div>
 
           {/* mobile nav */}

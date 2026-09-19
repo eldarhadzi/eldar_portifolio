@@ -25,10 +25,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={jetbrainsMono.variable}>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:px-6 focus:py-2 focus:text-primary"
+        >
+          Skip to content
+        </a>
         <Header />
         <StairTransition />
         <PageTransition>
-          {children}
+          <main id="main">{children}</main>
         </PageTransition>
         
       </body>
